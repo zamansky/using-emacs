@@ -1,6 +1,6 @@
+#+STARTUP: showall hidestars
 
-
-* A link to my blog: [[http://cestlaz.github.org][C'est la Z]]
+* A link to my blog: [[http://cestlaz.github.io][C'est la Z]]
 * Lesson 1 - setup
 ** Topics
    - mention tutorial
