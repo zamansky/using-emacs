@@ -1,0 +1,14 @@
+
+
+* A link to my blog: [[http://cestlaz.github.org][C'est la Z]]
+* Lesson 1 - setup
+** Topics
+   - mention tutorial
+   - talk about init.el
+** End result
+   - working init.el
+   - melpa configured
+   - try
+   - use-package 
+* Lesson 2 - org
+  - overview of org
