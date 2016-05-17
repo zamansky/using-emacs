@@ -1,4 +1,4 @@
-
+#+STARTUP: showall hidestars
 
 * Links
   - [[http://cestlaz.github.io][Here's my Blog]]
