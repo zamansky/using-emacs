@@ -1,17 +1,4 @@
 #+STARTUP: showall hidestars
 
-* Links
-  - [[http://cestlaz.github.io][Here's my Blog]]
-* Lesson 1
-** Part 1
-  Introducing the series and setting up the package manager
-  - Show melpa
-  - set up melpa
-** Installing some packages
-  - installed use-package
-  - installed try
-  - installed which-key
-* Lesson 2
-  Show some org-mode
-  - review init.el
-  - set up Readme.org
+For a list of all posts and videos check out http://cestlaz.github.io/stories/emacs
+
