@@ -47,9 +47,12 @@
   :config
   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 
-(setq ido-enable-flex-matching t)
-(setq ido-everywhere t)
-(ido-mode 1)
+
+
+;; using swiper so ido no longer needed
+;;(setq ido-enable-flex-matching t)
+;;(setq ido-everywhere t)
+;;(ido-mode 1)
 
 (defalias 'list-buffers 'ibuffer)
 ;; (defalias 'list-buffers 'ibuffer-other-window)
