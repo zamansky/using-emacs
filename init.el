@@ -105,4 +105,6 @@
     (define-key read-expression-map (kbd "C-r") 'counsel-expression-history)
     ))
 
-
+(use-package avy
+  :ensure t
+  :bind ("M-s" . avy-goto-char))
