@@ -1,4 +1,4 @@
-#+STARTIP: overview
+#+STARTUP: overview
 
 
 
