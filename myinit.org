@@ -111,3 +111,18 @@
   :ensure t
   :config (load-theme 'zenburn t))
   #+END_SRC
+* Reveal.js
+  #+BEGIN_SRC emacs-lisp
+    (use-package ox-reveal
+    :ensure ox-reveal)
+
+    (setq org-reveal-root "http://cdn.jsdelivr.net/reveal.js/3.0.0/")
+    (setq org-reveal-mathjax t)
+
+    (use-package htmlize
+    :ensure t)
+  #+END_SRC
+
+  #+RESULTS:
+  : t
+
