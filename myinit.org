@@ -110,6 +110,8 @@
   (use-package zenburn-theme
   :ensure t
   :config (load-theme 'zenburn t))
+
+  (load-theme 'leuven t)
   #+END_SRC
 * Reveal.js
   #+BEGIN_SRC emacs-lisp
@@ -125,4 +127,21 @@
 
   #+RESULTS:
   : t
+  
+* Flycheck
+  #+BEGIN_SRC emacs-lisp
+    (use-package flycheck
+      :ensure t
+      :init
+      (global-flycheck-mode t))
 
+  #+END_SRC
+* Python
+  #+BEGIN_SRC emacs-lisp
+    (use-package jedi
+      :ensure t
+      :init
+      (add-hook 'python-mode-hook 'jedi:setup)
+      (add-hook 'python-mode-hook 'jedi:ac-setup))
+
+  #+END_SRC
