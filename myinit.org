@@ -143,5 +143,19 @@
       :init
       (add-hook 'python-mode-hook 'jedi:setup)
       (add-hook 'python-mode-hook 'jedi:ac-setup))
+      
+
+      (use-package elpy
+      :ensure t
+      :config 
+      (elpy-enable))
+
+  #+END_SRC
+* Yasnippet
+  #+BEGIN_SRC emacs-lisp
+    (use-package yasnippet
+      :ensure t
+      :init
+        (yas-global-mode 1))
 
   #+END_SRC
