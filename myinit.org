@@ -237,3 +237,15 @@
   #+RESULTS:
   : narrow-or-widen-dwim
 
+* Load other files
+   #+BEGIN_SRC emacs-lisp
+     (defun load-if-exists (f)
+       ""
+       (if (file-readable-p f)
+           (load-file f)))
+
+     (load-if-exists "~/Dropbox/shared/mu4econfig.el")
+     (load-if-exists "~/Dropbox/shared/tempstuff.el")
+     (load-if-exists "~/Dropbox/shared/not-for-github.el")
+
+   #+END_SRC
