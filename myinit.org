@@ -25,7 +25,6 @@
 	(which-key-mode))
   #+END_SRC
 
-
 * Org mode
   Org bullets makes things look pretty
   #+BEGIN_SRC emacs-lisp
@@ -52,9 +51,15 @@
   and Ivy / Counsel replace a lot of ido or helms completion functionality
   #+BEGIN_SRC emacs-lisp
   
+
+
   (use-package counsel
-  :ensure t
-  )
+  :bind
+  (("M-y" . counsel-yank-pop)
+  :map ivy-minibuffer-map
+  ("M-y" . ivy-next-line)))
+
+
 
   (use-package ivy
   :ensure t
@@ -138,6 +143,10 @@
   #+END_SRC
 * Python
   #+BEGIN_SRC emacs-lisp
+
+  (setq py-python-command "python3")
+  (setq python-shell-interpreter "python3")
+
     (use-package jedi
       :ensure t
       :init
@@ -191,6 +200,15 @@
   :ensure t
   :config 
   (global-set-key (kbd "C-=") 'er/expand-region))
+
+(setq save-interprogram-paste-before-kill t)
+
+
+(global-auto-revert-mode 1) ;; you might not want this
+(setq auto-revert-verbose nil) ;; or this
+(global-set-key (kbd "<f5>") 'revert-buffer)
+
+
   
   #+END_SRC
 
@@ -237,10 +255,30 @@
   #+RESULTS:
   : narrow-or-widen-dwim
 
+* Web Mode
+#+BEGIN_SRC emacs-lisp
+  (use-package web-mode
+    :ensure t
+    :config
+	 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+	 (setq web-mode-engines-alist
+	       '(("django"    . "\\.html\\'")))
+	 (setq web-mode-ac-sources-alist
+	       '(("css" . (ac-source-css-property))
+		 ("html" . (ac-source-words-in-buffer ac-source-abbrev))))
+(setq web-mode-enable-auto-closing t))
+
+
+#+END_SRC
+
+#+RESULTS:
+: t
+
+
 * Load other files
    #+BEGIN_SRC emacs-lisp
      (defun load-if-exists (f)
-       ""
+       "load the elisp file only if it exists and is readable"
        (if (file-readable-p f)
            (load-file f)))
 
@@ -249,3 +287,6 @@
      (load-if-exists "~/Dropbox/shared/not-for-github.el")
 
    #+END_SRC
+
+   #+RESULTS:
+   : t
