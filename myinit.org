@@ -53,11 +53,13 @@
   
 
 
-  (use-package counsel
+
+   (use-package counsel
   :bind
   (("M-y" . counsel-yank-pop)
-  :map ivy-minibuffer-map
-  ("M-y" . ivy-next-line)))
+   :map ivy-minibuffer-map
+   ("M-y" . ivy-next-line)))
+
 
 
 
@@ -273,7 +275,6 @@
 
 #+RESULTS:
 : t
-
 
 * Load other files
    #+BEGIN_SRC emacs-lisp
