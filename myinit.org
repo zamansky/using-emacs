@@ -269,6 +269,7 @@
 	       '(("css" . (ac-source-css-property))
 		 ("html" . (ac-source-words-in-buffer ac-source-abbrev))))
 (setq web-mode-enable-auto-closing t))
+(setq web-mode-enable-auto-quoting t) ; this fixes the quote problem I mentioned
 
 
 #+END_SRC
