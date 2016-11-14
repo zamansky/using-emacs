@@ -74,7 +74,7 @@
 
 
   (use-package swiper
-  :ensure try
+  :ensure t
   :bind (("C-s" . swiper)
 	 ("C-r" . swiper)
 	 ("C-c C-r" . ivy-resume)
