@@ -55,6 +55,7 @@
 
 
    (use-package counsel
+:ensure t
   :bind
   (("M-y" . counsel-yank-pop)
    :map ivy-minibuffer-map
