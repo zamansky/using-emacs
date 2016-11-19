@@ -65,3 +65,4 @@
  ;; If there is more than one, they won't work right.
  '(aw-leading-char-face ((t (:inherit ace-jump-face-foreground :height 3.0)))))
 (put 'narrow-to-region 'disabled nil)
+(put 'set-goal-column 'disabled nil)
