@@ -201,9 +201,15 @@
 
     (use-package spacemacs-theme
       :ensure t
-      :init
-      (load-theme 'spacemacs-dark t)
+      ;:init
+      ;(load-theme 'spacemacs-dark t)
       )
+
+(use-package base16-theme
+:ensure t
+)
+
+(load-theme 'base16-flat)
   #+END_SRC
 
   #+RESULTS:
