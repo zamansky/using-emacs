@@ -302,13 +302,13 @@
 
 (global-auto-revert-mode 1) ;; you might not want this
 (setq auto-revert-verbose nil) ;; or this
-global-set-key (kbd "<f5>") 'revert-buffer
+(global-set-key (kbd "<f5>") 'revert-buffer)
 
 
   
   #+END_SRC
 
->1;4205;0c* iedit and narrow / widen dwim
+* iedit and narrow / widen dwim
 
   #+BEGIN_SRC emacs-lisp
   ; mark and edit all copies of the marked region simultaniously. 
