@@ -209,10 +209,15 @@
 :ensure t
 )
 
-(load-theme 'base16-flat t)
+(use-package moe-theme
+:ensure t)
+
+; (load-theme 'base16-flat t)
+(moe-light)
   #+END_SRC
 
   #+RESULTS:
+  : t
 
 * Reveal.js
   #+BEGIN_SRC emacs-lisp
