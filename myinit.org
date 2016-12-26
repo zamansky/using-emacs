@@ -375,6 +375,175 @@
 
 #+RESULTS:
 : t
+* Stuff to refile as I do more Screencasts
+#+BEGIN_SRC emacs-lisp
+
+(setq user-full-name "Mike Zamansky"
+			user-mail-address "zamansky@gmail.com")
+;;--------------------------------------------------------------------------
+
+
+(global-set-key (kbd "\e\ei")
+		(lambda () (interactive) (find-file "~/Dropbox/orgfiles/i.org")))
+
+(global-set-key (kbd "\e\el")
+		(lambda () (interactive) (find-file "~/Dropbox/orgfiles/links.org")))
+
+(global-set-key (kbd "\e\ec")
+		(lambda () (interactive) (find-file "~/.emacs.d/myinit.org")))
+
+
+;;--------------------------------------------------------------------------
+;; latex
+(use-package tex
+:ensure auctex)
+
+(defun tex-view ()
+    (interactive)
+    (tex-send-command "evince" (tex-append tex-print-file ".pdf")))
+
+
+
+
+;; babel stuff
+
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((python . t)
+   (emacs-lisp . t)
+   (C . t)
+   (ditaa . t)
+   (dot . t)
+   (org . t)
+      (sh . t )
+   (shell . t )
+(latex . t )
+   ))
+
+
+
+;; projectile
+(use-package projectile
+  :ensure t
+  :config
+  (projectile-global-mode)
+(setq projectile-completion-system 'ivy))
+
+(use-package counsel-projectile
+  :ensure t
+  :config
+  (counsel-projectile-on))
+
+(use-package smartparens
+:ensure t
+:config
+(use-package smartparens-config)
+(use-package smartparens-html)
+(use-package smartparens-python)
+(use-package smartparens-latex)
+(smartparens-global-mode t)
+(show-smartparens-global-mode t)
+:bind
+( ("C-<down>" . sp-down-sexp)
+ ("C-<up>"   . sp-up-sexp)
+ ("M-<down>" . sp-backward-down-sexp)
+ ("M-<up>"   . sp-backward-up-sexp)
+("C-M-a" . sp-beginning-of-sexp)
+ ("C-M-e" . sp-end-of-sexp)
+
+
+
+ ("C-M-f" . sp-forward-sexp)
+ ("C-M-b" . sp-backward-sexp)
+
+ ("C-M-n" . sp-next-sexp)
+ ("C-M-p" . sp-previous-sexp)
+
+ ("C-S-f" . sp-forward-symbol)
+ ("C-S-b" . sp-backward-symbol)
+
+ ("C-<right>" . sp-forward-slurp-sexp)
+ ("M-<right>" . sp-forward-barf-sexp)
+ ("C-<left>"  . sp-backward-slurp-sexp)
+ ("M-<left>"  . sp-backward-barf-sexp)
+
+ ("C-M-t" . sp-transpose-sexp)
+ ("C-M-k" . sp-kill-sexp)
+ ("C-k"   . sp-kill-hybrid-sexp)
+ ("M-k"   . sp-backward-kill-sexp)
+ ("C-M-w" . sp-copy-sexp)
+
+ ("C-M-d" . delete-sexp)
+
+ ("M-<backspace>" . backward-kill-word)
+ ("C-<backspace>" . sp-backward-kill-word)
+ ([remap sp-backward-kill-word] . backward-kill-word)
+
+ ("M-[" . sp-backward-unwrap-sexp)
+ ("M-]" . sp-unwrap-sexp)
+
+ ("C-x C-t" . sp-transpose-hybrid-sexp)
+
+ ("C-c ("  . wrap-with-parens)
+ ("C-c ["  . wrap-with-brackets)
+ ("C-c {"  . wrap-with-braces)
+ ("C-c '"  . wrap-with-single-quotes)
+ ("C-c \"" . wrap-with-double-quotes)
+ ("C-c _"  . wrap-with-underscores)
+("C-c `"  . wrap-with-back-quotes)
+))
+
+;;--------------------------------------------
+
+
+
+(use-package cider
+  :ensure t 
+  :config
+  ; this is to make cider-jack-in-cljs work
+  (setq cider-cljs-lein-repl
+      "(do (require 'figwheel-sidecar.repl-api)
+           (figwheel-sidecar.repl-api/start-figwheel!)
+           (figwheel-sidecar.repl-api/cljs-repl))")
+
+  )
+
+(use-package ac-cider
+  :ensure t
+  :config
+  (add-hook 'cider-mode-hook 'ac-flyspell-workaround)
+  (add-hook 'cider-mode-hook 'ac-cider-setup)
+  (add-hook 'cider-repl-mode-hook 'ac-cider-setup)
+  (eval-after-load "auto-complete"
+    '(progn
+       (add-to-list 'ac-modes 'cider-mode)
+       (add-to-list 'ac-modes 'cider-repl-mode)))
+  )
+
+(use-package magit
+:ensure t
+:init
+(progn
+(bind-key "C-x g" 'magit-status)
+))
+
+
+(use-package dired+
+  :ensure t
+  :config (require 'dired+)
+  )
+
+
+;; font scaling
+(use-package default-text-scale
+  :ensure t
+  :config
+  (global-set-key (kbd "C-M-=") 'default-text-scale-increase)
+  (global-set-key (kbd "C-M--") 'default-text-scale-decrease))
+
+
+
+#+END_SRC
 
 * Load other files
    #+BEGIN_SRC emacs-lisp
@@ -384,7 +553,6 @@
            (load-file f)))
 
      (load-if-exists "~/Dropbox/shared/mu4econfig.el")
-     (load-if-exists "~/Dropbox/shared/tempstuff.el")
      (load-if-exists "~/Dropbox/shared/not-for-github.el")
 
    #+END_SRC
