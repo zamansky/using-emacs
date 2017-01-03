@@ -34,7 +34,7 @@
  '(org-startup-indented t)
  '(package-selected-packages
    (quote
-    (ag google-contacts base16-theme default-text-scale ac-cider cider js2-mode virtualenvwrapper anti-zenburn-theme tango-plus-theme moe-theme material-theme monokai-theme smartparens web-mode spacemacs-theme iedit aggressive-indent expand-region aggresive-indent hungry-delete beacon htmlize ox-reveal zenburn-theme which-key use-package try org-bullets elfeed-org counsel color-theme auto-complete ace-window)))
+    (golden-ratio openwith wgrep gnuplot-mode gnuplot sunshine google-contacts base16-theme default-text-scale ac-cider cider js2-mode virtualenvwrapper anti-zenburn-theme tango-plus-theme moe-theme material-theme monokai-theme smartparens web-mode spacemacs-theme iedit aggressive-indent expand-region aggresive-indent hungry-delete beacon htmlize ox-reveal zenburn-theme which-key use-package try org-bullets elfeed-org counsel color-theme auto-complete ace-window)))
  '(pdf-view-midnight-colors (quote ("#DCDCCC" . "#383838")))
  '(vc-annotate-background "#2B2B2B")
  '(vc-annotate-color-map

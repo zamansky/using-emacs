@@ -245,22 +245,32 @@
 * Python
   #+BEGIN_SRC emacs-lisp
 
-  (setq py-python-command "python3")
-  (setq python-shell-interpreter "python3")
+    (setq py-python-command "python3")
+    (setq python-shell-interpreter "python3")
 
-    (use-package jedi
-      :ensure t
-      :init
-      (add-hook 'python-mode-hook 'jedi:setup)
-      (add-hook 'python-mode-hook 'jedi:ac-setup))
-      
+      (use-package jedi
+        :ensure t
+        :init
+        (add-hook 'python-mode-hook 'jedi:setup)
+        (add-hook 'python-mode-hook 'jedi:ac-setup))
 
-      (use-package elpy
+
+        (use-package elpy
+        :ensure t
+        :config 
+        (elpy-enable))
+
+    (use-package virtualenvwrapper
       :ensure t
-      :config 
-      (elpy-enable))
+      :config
+      (venv-initialize-interactive-shells)
+      (venv-initialize-eshell))
 
   #+END_SRC
+
+  #+RESULTS:
+  : t
+
 * Yasnippet
   #+BEGIN_SRC emacs-lisp
     (use-package yasnippet
