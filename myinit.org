@@ -77,9 +77,9 @@
     				    ("b" "Blog idea" entry (file+headline "~/Dropbox/orgfiles/i.org" "Blog Topics:")
     				     "* %?\n%T" :prepend t)
     				    ("t" "To Do Item" entry (file+headline "~/Dropbox/orgfiles/i.org" "To Do")
-    				     "* %?\n%T" :prepend t)
+    				     "* TODO %?\n%u" :prepend t)
     				    ("n" "Note" entry (file+headline "~/Dropbox/orgfiles/i.org" "Note space")
-    				     "* %?\n%T" :prepend t)
+    				     "* %?\n%u" :prepend t)
 
     				    ("j" "Journal" entry (file+datetree "~/Dropbox/journal.org")
     				     "* %?\nEntered on %U\n  %i\n  %a")
