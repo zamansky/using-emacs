@@ -52,6 +52,11 @@
 
         (global-set-key "\C-ca" 'org-agenda)
 
+        (setq org-agenda-custom-commands
+        '(("c" "Simple agenda view"
+        ((agenda "")
+        (alltodo "")))))
+
         (use-package org-ac
     	    :ensure t
     	    :init (progn
