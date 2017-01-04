@@ -29,86 +29,102 @@
   Org bullets makes things look pretty
   #+BEGIN_SRC emacs-lisp
 
-(setenv "BROWSER" "chromium-browser")
+    (setenv "BROWSER" "chromium-browser")
 
-  	(use-package org-bullets
-  	:ensure t
-  	:config
-  	(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+    	  (use-package org-bullets
+    	  :ensure t
+    	  :config
+    	  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 
-        (custom-set-variables
-         '(org-directory "~/Dropbox/orgfiles")
-         '(org-default-notes-file (concat org-directory "/notes.org"))
-         '(org-export-html-postamble nil)
-         '(org-hide-leading-stars t)
-         '(org-startup-folded (quote overview))
-         '(org-startup-indented t)
-         )
+            (custom-set-variables
+             '(org-directory "~/Dropbox/orgfiles")
+             '(org-default-notes-file (concat org-directory "/notes.org"))
+             '(org-export-html-postamble nil)
+             '(org-hide-leading-stars t)
+             '(org-startup-folded (quote overview))
+             '(org-startup-indented t)
+             )
 
-        (setq org-file-apps
-    	  (append '(
-    		    ("\\.pdf\\'" . "evince %s")
-    		    ) org-file-apps ))
+            (setq org-file-apps
+      	    (append '(
+      		      ("\\.pdf\\'" . "evince %s")
+      		      ) org-file-apps ))
 
-        (global-set-key "\C-ca" 'org-agenda)
+            (global-set-key "\C-ca" 'org-agenda)
 
-        (setq org-agenda-custom-commands
-        '(("c" "Simple agenda view"
-        ((agenda "")
-        (alltodo "")))))
+            (setq org-agenda-custom-commands
+            '(("c" "Simple agenda view"
+            ((agenda "")
+            (alltodo "")))))
 
-        (use-package org-ac
-    	    :ensure t
-    	    :init (progn
-    		    (require 'org-ac)
-    		    (org-ac/config-default)
-    		    ))
+            (use-package org-ac
+      	      :ensure t
+      	      :init (progn
+      		      (require 'org-ac)
+      		      (org-ac/config-default)
+      		      ))
 
-        (global-set-key (kbd "C-c c") 'org-capture)
+            (global-set-key (kbd "C-c c") 'org-capture)
 
-        (setq org-agenda-files (list "~/Dropbox/orgfiles/gcal.org"
-    				 "~/Dropbox/orgfiles/i.org"
-    				 "~/Dropbox/orgfiles/schedule.org"))
-        (setq org-capture-templates
-    			    '(("a" "Appointment" entry (file  "~/Dropbox/orgfiles/gcal.org" "Appointments")
-    				     "* TODO %?\n:PROPERTIES:\n\n:END:\nDEADLINE: %^T \n %i\n")
-    				    ("l" "Link" entry (file+headline "~/Dropbox/orgfiles/links.org" "Links")
-    				     "* %? %^L %^g \n%T" :prepend t)
-    				    ("b" "Blog idea" entry (file+headline "~/Dropbox/orgfiles/i.org" "Blog Topics:")
-    				     "* %?\n%T" :prepend t)
-    				    ("t" "To Do Item" entry (file+headline "~/Dropbox/orgfiles/i.org" "To Do")
-    				     "* TODO %?\n%u" :prepend t)
-    				    ("n" "Note" entry (file+headline "~/Dropbox/orgfiles/i.org" "Note space")
-    				     "* %?\n%u" :prepend t)
+            (setq org-agenda-files (list "~/Dropbox/orgfiles/gcal.org"
+      				   "~/Dropbox/orgfiles/i.org"
+      				   "~/Dropbox/orgfiles/schedule.org"))
+            (setq org-capture-templates
+      			      '(("a" "Appointment" entry (file  "~/Dropbox/orgfiles/gcal.org" )
+      				       "* TODO %?\nDEADLINE: %^T \n\n %i\n")
+      				      ("l" "Link" entry (file+headline "~/Dropbox/orgfiles/links.org" "Links")
+      				       "* %? %^L %^g \n%T" :prepend t)
+      				      ("b" "Blog idea" entry (file+headline "~/Dropbox/orgfiles/i.org" "Blog Topics:")
+      				       "* %?\n%T" :prepend t)
+      				      ("t" "To Do Item" entry (file+headline "~/Dropbox/orgfiles/i.org" "To Do")
+      				       "* TODO %?\n%u" :prepend t)
+      				      ("n" "Note" entry (file+headline "~/Dropbox/orgfiles/i.org" "Note space")
+      				       "* %?\n%u" :prepend t)
 
-    				    ("j" "Journal" entry (file+datetree "~/Dropbox/journal.org")
-    				     "* %?\nEntered on %U\n  %i\n  %a")
-                                       ("s" "Screencast" entry (file "~/Dropbox/orgfiles/screencastnotes.org")
-                                       "* %?\n%i\n")))
+      				      ("j" "Journal" entry (file+datetree "~/Dropbox/journal.org")
+      				       "* %?\nEntered on %U\n  %i\n  %a")
+  					 ("s" "Screencast" entry (file "~/Dropbox/orgfiles/screencastnotes.org")
+  					 "* %?\n%i\n")))
+            ;; (setq org-capture-templates
+      	  ;; 		    '(("a" "Appointment" entry (file  "~/Dropbox/orgfiles/gcal.org" )
+      	  ;; 			     "* TODO %?\n:PROPERTIES:\nDEADLINE: %^T \n\n:END:\n %i\n")
+      	  ;; 			    ("l" "Link" entry (file+headline "~/Dropbox/orgfiles/links.org" "Links")
+      	  ;; 			     "* %? %^L %^g \n%T" :prepend t)
+      	  ;; 			    ("b" "Blog idea" entry (file+headline "~/Dropbox/orgfiles/i.org" "Blog Topics:")
+      	  ;; 			     "* %?\n%T" :prepend t)
+      	  ;; 			    ("t" "To Do Item" entry (file+headline "~/Dropbox/orgfiles/i.org" "To Do")
+      	  ;; 			     "* TODO %?\n%u" :prepend t)
+      	  ;; 			    ("n" "Note" entry (file+headline "~/Dropbox/orgfiles/i.org" "Note space")
+      	  ;; 			     "* %?\n%u" :prepend t)
+
+      	  ;; 			    ("j" "Journal" entry (file+datetree "~/Dropbox/journal.org")
+      	  ;; 			     "* %?\nEntered on %U\n  %i\n  %a")
+            ;;                                ("s" "Screencast" entry (file "~/Dropbox/orgfiles/screencastnotes.org")
+            ;;                                "* %?\n%i\n")))
 
 
-    (defadvice org-capture-finalize 
-        (after delete-capture-frame activate)  
-      "Advise capture-finalize to close the frame"  
-      (if (equal "capture" (frame-parameter nil 'name))  
-  	(delete-frame)))
+        (defadvice org-capture-finalize 
+            (after delete-capture-frame activate)  
+  	"Advise capture-finalize to close the frame"  
+  	(if (equal "capture" (frame-parameter nil 'name))  
+    	  (delete-frame)))
 
-    (defadvice org-capture-destroy 
-        (after delete-capture-frame activate)  
-      "Advise capture-destroy to close the frame"  
-      (if (equal "capture" (frame-parameter nil 'name))  
-  	(delete-frame)))  
+        (defadvice org-capture-destroy 
+            (after delete-capture-frame activate)  
+  	"Advise capture-destroy to close the frame"  
+  	(if (equal "capture" (frame-parameter nil 'name))  
+    	  (delete-frame)))  
 
-    (use-package noflet
-      :ensure t )
-    (defun make-capture-frame ()
-      "Create a new frame and run org-capture."
-      (interactive)
-      (make-frame '((name . "capture")))
-      (select-frame-by-name "capture")
-      (delete-other-windows)
-      (noflet ((switch-to-buffer-other-window (buf) (switch-to-buffer buf)))
-        (org-capture)))
+        (use-package noflet
+  	:ensure t )
+        (defun make-capture-frame ()
+  	"Create a new frame and run org-capture."
+  	(interactive)
+  	(make-frame '((name . "capture")))
+  	(select-frame-by-name "capture")
+  	(delete-other-windows)
+  	(noflet ((switch-to-buffer-other-window (buf) (switch-to-buffer buf)))
+            (org-capture)))
   #+END_SRC
 
   #+RESULTS:
