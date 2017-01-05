@@ -71,7 +71,7 @@
       				   "~/Dropbox/orgfiles/schedule.org"))
             (setq org-capture-templates
       			      '(("a" "Appointment" entry (file  "~/Dropbox/orgfiles/gcal.org" )
-      				       "* TODO %?\nDEADLINE: %^T \n\n %i\n")
+      				       "* %?\n\n%^T\n\n:PROPERTIES:\n\n:END:\n\n")
       				      ("l" "Link" entry (file+headline "~/Dropbox/orgfiles/links.org" "Links")
       				       "* %? %^L %^g \n%T" :prepend t)
       				      ("b" "Blog idea" entry (file+headline "~/Dropbox/orgfiles/i.org" "Blog Topics:")
