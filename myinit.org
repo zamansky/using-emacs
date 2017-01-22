@@ -600,7 +600,7 @@
 	    (defhydra toggle (:color blue)
 	      "toggle"
 	      ("a" abbrev-mode "abbrev")
-	      ("s" flyspell-mode-mode "flyspell")
+	      ("s" flyspell-mode "flyspell")
 	      ("d" toggle-debug-on-error "debug")
 	      ("c" fci-mode "fCi")
 	      ("f" auto-fill-mode "fill")
