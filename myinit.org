@@ -564,7 +564,7 @@
   :config (require 'dired+)
   )
 
-
+  
 ;; font scaling
 (use-package default-text-scale
   :ensure t
@@ -594,5 +594,14 @@
 #+BEGIN_SRC emacs-lisp
 (add-hook 'org-mode-hook 'turn-on-flyspell)
 (add-hook 'org-mode-hook 'turn-on-auto-fill)
+(add-hook 'mu4e-compose-mode-hook 'turn-on-flyspell)
+(add-hook 'mu4e-compose-mode-hook 'turn-on-auto-fill)
 
+#+END_SRC
+* Better Shell
+#+BEGIN_SRC emacs-lisp
+(use-package better-shell
+    :ensure t
+    :bind (("C-'" . better-shell-shell)
+           ("C-;" . better-shell-remote-open)))
 #+END_SRC
