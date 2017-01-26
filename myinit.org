@@ -656,3 +656,28 @@
     :bind (("C-'" . better-shell-shell)
            ("C-;" . better-shell-remote-open)))
 #+END_SRC
+* personal keymap
+#+BEGIN_SRC emacs-lisp
+;; unset C- and M- digit keys
+(dotimes (n 10)
+  (global-unset-key (kbd (format "C-%d" n)))
+  (global-unset-key (kbd (format "M-%d" n)))
+  )
+
+
+(defun org-agenda-show-agenda-and-todo (&optional arg)
+  (interactive "P")
+  (org-agenda arg "c"))
+
+;; set up my own map
+(define-prefix-command 'z-map)
+(global-set-key (kbd "C-1") 'z-map)
+
+(define-key z-map (kbd "m") 'mu4e)
+(define-key z-map (kbd "1") 'org-global-cycle)
+(define-key z-map (kbd "a") 'org-agenda-show-agenda-and-todo)
+(define-key z-map (kbd "i") (lambda () (interactive) (find-file "~/Dropbox/orgfiles/i.org")))
+#+END_SRC
+
+#+RESULTS:
+| lambda | nil | (interactive) | (find-file ~/Dropbox/orgfiles/i.org) |
