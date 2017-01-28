@@ -240,7 +240,7 @@
 :config
 (powerline-moe-theme)
 )
-y
+
   #+END_SRC
 
   #+RESULTS:
@@ -656,11 +656,22 @@ y
 
 #+END_SRC
 * Better Shell
-#+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC emacs-lisp :tangle no
 (use-package better-shell
     :ensure t
     :bind (("C-'" . better-shell-shell)
            ("C-;" . better-shell-remote-open)))
+#+END_SRC
+* eshell stuff
+#+BEGIN_SRC emacs-lisp
+  (use-package shell-switcher
+  :ensure t
+  :config 
+  (setq shell-switcher-mode t)
+  :bind (("C-'" . shell-switcher-switch-buffer)
+  ("C-x 4 '" . shell-switcher-switch-buffer-other-window)
+  ("C-M-'" . shell-switcher-new-shell)))
+
 #+END_SRC
 * personal keymap
 #+BEGIN_SRC emacs-lisp
