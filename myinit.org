@@ -210,7 +210,7 @@
     ))
   #+END_SRC
 
-* Themes
+* Themes and modeline
   #+BEGIN_SRC emacs-lisp
 
     (use-package color-theme
@@ -235,6 +235,12 @@
 
 ; (load-theme 'base16-flat t)
 (moe-light)
+(use-package powerline
+:ensure t
+:config
+(powerline-moe-theme)
+)
+y
   #+END_SRC
 
   #+RESULTS:
