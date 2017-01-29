@@ -665,41 +665,52 @@
 * eshell stuff
 #+BEGIN_SRC emacs-lisp
 
-(use-package eshell-git-prompt 
-:ensure t
+  (use-package eshell-git-prompt 
+  :ensure t
 
-)
-  (use-package shell-switcher
+  )
+    (use-package shell-switcher
+    :ensure t
+    :config 
+    (setq shell-switcher-mode t)
+    :bind (("C-'" . shell-switcher-switch-buffer)
+    ("C-x 4 '" . shell-switcher-switch-buffer-other-window)
+    ("C-M-'" . shell-switcher-new-shell)))
+
+
+	;; Visual commands
+    (setq eshell-visual-commands '("vi" "screen" "top" "less" "more" "lynx"
+                                       "ncftp" "pine" "tin" "trn" "elm" "vim"
+                                       "nmtui" "alsamixer" "htop" "el" "elinks"
+                                       ))
+    (setq eshell-visual-subcommands '(("git" "log" "diff" "show")))
+  (setq eshell-list-files-after-cd t)
+  (defun eshell-clear-buffer ()
+    "Clear terminal"
+    (interactive)
+    (let ((inhibit-read-only t))
+      (erase-buffer)
+      (eshell-send-input)))
+  (add-hook 'eshell-mode-hook
+	'(lambda()
+            (local-set-key (kbd "C-l") 'eshell-clear-buffer)))
+
+  (defun eshell/magit ()
+  "Function to open magit-status for the current directory"
+    (interactive)
+    (magit-status default-directory)
+    nil)
+
+    (use-package eshell-prompt-extras 
   :ensure t
   :config 
-  (setq shell-switcher-mode t)
-  :bind (("C-'" . shell-switcher-switch-buffer)
-  ("C-x 4 '" . shell-switcher-switch-buffer-other-window)
-  ("C-M-'" . shell-switcher-new-shell)))
-
-
-      ;; Visual commands
-  (setq eshell-visual-commands '("vi" "screen" "top" "less" "more" "lynx"
-                                     "ncftp" "pine" "tin" "trn" "elm" "vim"
-                                     "nmtui" "alsamixer" "htop" "el" "elinks"
-                                     ))
-  (setq eshell-visual-subcommands '(("git" "log" "diff" "show")))
-(setq eshell-list-files-after-cd t)
-(defun eshell-clear-buffer ()
-  "Clear terminal"
-  (interactive)
-  (let ((inhibit-read-only t))
-    (erase-buffer)
-    (eshell-send-input)))
-(add-hook 'eshell-mode-hook
-      '(lambda()
-          (local-set-key (kbd "C-l") 'eshell-clear-buffer)))
-
-(defun eshell/magit ()
-"Function to open magit-status for the current directory"
-  (interactive)
-  (magit-status default-directory)
-  nil)
+  (eval-after-load 'esh-opt
+    (progn
+      (require 'virtualenvwrapper)
+      (venv-initialize-eshell)
+      (autoload 'epe-theme-lambda "eshell-prompt-extras")
+      (setq eshell-highlight-prompt nil
+            eshell-prompt-function 'epe-theme-lambda))))
 
 #+END_SRC
 
