@@ -751,13 +751,14 @@ Eshell prompt
 (dotimes (n 10)
   (global-unset-key (kbd (format "C-%d" n)))
   (global-unset-key (kbd (format "M-%d" n)))
-  (org-agenda-fortnight-view)
   )
 
 
 (defun org-agenda-show-agenda-and-todo (&optional arg)
   (interactive "P")
-  (org-agenda arg "c"))
+  (org-agenda arg "c")
+  (org-agenda-fortnight-view))
+
 
 ;; set up my own map
 (define-prefix-command 'z-map)
