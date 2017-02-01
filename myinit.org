@@ -701,20 +701,46 @@
 
 Eshell prompt
 #+BEGIN_SRC emacs-lisp
-    (use-package eshell-prompt-extras
-    :ensure t
-    :config
- (with-eval-after-load "esh-opt"
-   (autoload 'epe-theme-lambda "eshell-prompt-extras")
-   (setq eshell-highlight-prompt nil
-         eshell-prompt-function 'epe-theme-lambda))
- (with-eval-after-load "esh-opt"
-    (require 'virtualenvwrapper)
-    (venv-initialize-eshell)
-    (autoload 'epe-theme-lambda "eshell-prompt-extras")
-    (setq eshell-highlight-prompt nil
-          eshell-prompt-function 'epe-theme-lambda))
-	)
+ (defcustom dotemacs-eshell/prompt-git-info
+  t
+  "Turns on additional git information in the prompt."
+  :group 'dotemacs-eshell
+  :type 'boolean)
+
+;; (epe-colorize-with-face "abc" 'font-lock-comment-face)
+(defmacro epe-colorize-with-face (str face)
+  `(propertize ,str 'face ,face))
+
+(defface epe-venv-face
+  '((t (:inherit font-lock-comment-face)))
+  "Face of python virtual environment info in prompt."
+  :group 'epe)
+
+  (setq eshell-prompt-function
+      (lambda ()
+        (concat (propertize (abbreviate-file-name (eshell/pwd)) 'face 'eshell-prompt)
+                (when (and dotemacs-eshell/prompt-git-info
+                           (fboundp #'vc-git-branches))
+                  (let ((branch (car (vc-git-branches))))
+                    (when branch
+                      (concat
+                       (propertize " [" 'face 'font-lock-keyword-face)
+                       (propertize branch 'face 'font-lock-function-name-face)
+                       (let* ((status (shell-command-to-string "git status --porcelain"))
+                              (parts (split-string status "\n" t " "))
+                              (states (mapcar #'string-to-char parts))
+                              (added (count-if (lambda (char) (= char ?A)) states))
+                              (modified (count-if (lambda (char) (= char ?M)) states))
+                              (deleted (count-if (lambda (char) (= char ?D)) states)))
+                         (when (> (+ added modified deleted) 0)
+                           (propertize (format " +%d ~%d -%d" added modified deleted) 'face 'font-lock-comment-face)))
+                       (propertize "]" 'face 'font-lock-keyword-face)))))
+                (when (and (boundp #'venv-current-name) venv-current-name)
+                  (concat 
+                    (epe-colorize-with-face " [" 'epe-venv-face) 
+                    (propertize venv-current-name 'face `(:foreground "#2E8B57" :slant italic))
+                    (epe-colorize-with-face "]" 'epe-venv-face))) 
+                (propertize " $ " 'face 'font-lock-constant-face))))
 #+END_SRC
 #+RESULTS:
 : t
