@@ -751,6 +751,7 @@ Eshell prompt
 (dotimes (n 10)
   (global-unset-key (kbd (format "C-%d" n)))
   (global-unset-key (kbd (format "M-%d" n)))
+  (org-agenda-fortnight-view)
   )
 
 
