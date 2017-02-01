@@ -31,10 +31,10 @@
 
     (setenv "BROWSER" "chromium-browser")
 
-  	(use-package org-bullets
-  	:ensure t
-  	:config
-  	(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+        (use-package org-bullets
+        :ensure t
+        :config
+        (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 
             (custom-set-variables
              '(org-directory "~/Dropbox/orgfiles")
@@ -46,9 +46,9 @@
              )
 
             (setq org-file-apps
-        	  (append '(
-        		    ("\\.pdf\\'" . "evince %s")
-        		    ) org-file-apps ))
+  		(append '(
+          		  ("\\.pdf\\'" . "evince %s")
+          		  ) org-file-apps ))
 
             (global-set-key "\C-ca" 'org-agenda)
 
@@ -58,50 +58,47 @@
             (alltodo "")))))
 
             (use-package org-ac
-        	    :ensure t
-        	    :init (progn
-        		    (require 'org-ac)
-        		    (org-ac/config-default)
-        		    ))
+          	  :ensure t
+          	  :init (progn
+          		  (require 'org-ac)
+          		  (org-ac/config-default)
+          		  ))
 
             (global-set-key (kbd "C-c c") 'org-capture)
 
             (setq org-agenda-files (list "~/Dropbox/orgfiles/gcal.org"
-        				 "~/Dropbox/orgfiles/i.org"
-        				 "~/Dropbox/orgfiles/schedule.org"))
+          			       "~/Dropbox/orgfiles/i.org"
+          			       "~/Dropbox/orgfiles/schedule.org"))
             (setq org-capture-templates
-        			    '(("a" "Appointment" entry (file  "~/Dropbox/orgfiles/gcal.org" )
-        				     "* %?\n\n%^T\n\n:PROPERTIES:\n\n:END:\n\n")
-        				    ("l" "Link" entry (file+headline "~/Dropbox/orgfiles/links.org" "Links")
-        				     "* %? %^L %^g \n%T" :prepend t)
-        				    ("b" "Blog idea" entry (file+headline "~/Dropbox/orgfiles/i.org" "Blog Topics:")
-        				     "* %?\n%T" :prepend t)
-        				    ("t" "To Do Item" entry (file+headline "~/Dropbox/orgfiles/i.org" "To Do")
-        				     "* TODO %?\n%u" :prepend t)
-  				    ("m" "Mail To Do" entry (file+headline "~/Dropbox/orgfiles/i.org" "To Do")
-  				     "* TODO %?\n %a")
-				   
-        				    ("n" "Note" entry (file+headline "~/Dropbox/orgfiles/i.org" "Note space")
-        				     "* %?\n%u" :prepend t)
-
-        				    ("j" "Journal" entry (file+datetree "~/Dropbox/journal.org")
-        				     "* %?\nEntered on %U\n  %i\n  %a")
-    				       ("s" "Screencast" entry (file "~/Dropbox/orgfiles/screencastnotes.org")
-    				       "* %?\n%i\n")))
+          			  '(("a" "Appointment" entry (file  "~/Dropbox/orgfiles/gcal.org" )
+          				   "* %?\n\n%^T\n\n:PROPERTIES:\n\n:END:\n\n")
+          				  ("l" "Link" entry (file+headline "~/Dropbox/orgfiles/links.org" "Links")
+          				   "* %? %^L %^g \n%T" :prepend t)
+          				  ("b" "Blog idea" entry (file+headline "~/Dropbox/orgfiles/i.org" "Blog Topics:")
+          				   "* %?\n%T" :prepend t)
+          				  ("t" "To Do Item" entry (file+headline "~/Dropbox/orgfiles/i.org" "To Do")
+          				   "* TODO %?\n%u" :prepend t)
+  					  ("m" "Mail To Do" entry (file+headline "~/Dropbox/orgfiles/i.org" "To Do")
+  					   "* TODO %a\n %?" :prepend t)
+  					  ("g" "GMail To Do" entry (file+headline "~/Dropbox/orgfiles/i.org" "To Do")
+  					   "* TODO %^L\n %?" :prepend t)
+  					  ("n" "Note" entry (file+headline "~/Dropbox/orgfiles/i.org" "Note space")
+          				   "* %?\n%u" :prepend t)
+  					  ))
             ;; (setq org-capture-templates
-  	;; 		    '(("a" "Appointment" entry (file  "~/Dropbox/orgfiles/gcal.org" )
-  	;; 			     "* TODO %?\n:PROPERTIES:\nDEADLINE: %^T \n\n:END:\n %i\n")
-  	;; 			    ("l" "Link" entry (file+headline "~/Dropbox/orgfiles/links.org" "Links")
-  	;; 			     "* %? %^L %^g \n%T" :prepend t)
-  	;; 			    ("b" "Blog idea" entry (file+headline "~/Dropbox/orgfiles/i.org" "Blog Topics:")
-  	;; 			     "* %?\n%T" :prepend t)
-  	;; 			    ("t" "To Do Item" entry (file+headline "~/Dropbox/orgfiles/i.org" "To Do")
-  	;; 			     "* TODO %?\n%u" :prepend t)
-  	;; 			    ("n" "Note" entry (file+headline "~/Dropbox/orgfiles/i.org" "Note space")
-  	;; 			     "* %?\n%u" :prepend t)
+        ;; 		    '(("a" "Appointment" entry (file  "~/Dropbox/orgfiles/gcal.org" )
+        ;; 			     "* TODO %?\n:PROPERTIES:\nDEADLINE: %^T \n\n:END:\n %i\n")
+        ;; 			    ("l" "Link" entry (file+headline "~/Dropbox/orgfiles/links.org" "Links")
+        ;; 			     "* %? %^L %^g \n%T" :prepend t)
+        ;; 			    ("b" "Blog idea" entry (file+headline "~/Dropbox/orgfiles/i.org" "Blog Topics:")
+        ;; 			     "* %?\n%T" :prepend t)
+        ;; 			    ("t" "To Do Item" entry (file+headline "~/Dropbox/orgfiles/i.org" "To Do")
+        ;; 			     "* TODO %?\n%u" :prepend t)
+        ;; 			    ("n" "Note" entry (file+headline "~/Dropbox/orgfiles/i.org" "Note space")
+        ;; 			     "* %?\n%u" :prepend t)
 
-  	;; 			    ("j" "Journal" entry (file+datetree "~/Dropbox/journal.org")
-  	;; 			     "* %?\nEntered on %U\n  %i\n  %a")
+        ;; 			    ("j" "Journal" entry (file+datetree "~/Dropbox/journal.org")
+        ;; 			     "* %?\nEntered on %U\n  %i\n  %a")
             ;;                                ("s" "Screencast" entry (file "~/Dropbox/orgfiles/screencastnotes.org")
             ;;                                "* %?\n%i\n")))
 
@@ -110,13 +107,13 @@
             (after delete-capture-frame activate)  
         "Advise capture-finalize to close the frame"  
         (if (equal "capture" (frame-parameter nil 'name))  
-  	(delete-frame)))
+        (delete-frame)))
 
         (defadvice org-capture-destroy 
             (after delete-capture-frame activate)  
         "Advise capture-destroy to close the frame"  
         (if (equal "capture" (frame-parameter nil 'name))  
-  	(delete-frame)))  
+        (delete-frame)))  
 
         (use-package noflet
         :ensure t )
