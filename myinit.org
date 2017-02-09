@@ -449,6 +449,7 @@
  '((python . t)
    (emacs-lisp . t)
    (C . t)
+(js . t)
    (ditaa . t)
    (dot . t)
    (org . t)
