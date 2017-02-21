@@ -815,6 +815,7 @@ right now in shared folder
 (global-set-key (kbd "C-1") 'z-map)
 
 (define-key z-map (kbd "m") 'mu4e)
+(define-key z-map (kbd "e") 'bjm/elfeed-load-db-and-open)
 (define-key z-map (kbd "1") 'org-global-cycle)
 (define-key z-map (kbd "a") 'org-agenda-show-agenda-and-todo)
 (define-key z-map (kbd "s") 'flyspell-correct-word-before-point)
