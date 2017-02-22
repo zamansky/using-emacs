@@ -1,3 +1,4 @@
+
 #+STARTUP: overview
 
 
@@ -822,8 +823,6 @@ Eshell prompt
 
 
 
-    (defalias 'elfeed-toggle-star
-      (elfeed-expose #'elfeed-search-toggle-all 'star))
 
 
     (use-package elfeed
@@ -838,6 +837,7 @@ Eshell prompt
 		  )
       )
 
+
     (use-package elfeed-goodies
       :ensure t
       :config
@@ -850,6 +850,9 @@ Eshell prompt
       (elfeed-org)
       (setq rmh-elfeed-org-files (list "~/Dropbox/shared/elfeed.org")))
 
+
+    (defalias 'elfeed-toggle-star
+      (elfeed-expose #'elfeed-search-toggle-all 'star))
 
 
 
