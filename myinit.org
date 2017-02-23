@@ -852,7 +852,7 @@ Eshell prompt
 
 
     (defalias 'elfeed-toggle-star
-      (elfeed-expose #'elfeed-search-toggle-all 'star))
+      (elfeed-expose #'elfeed-search-toggle-all '*star))
 
 
 
@@ -893,7 +893,7 @@ Eshell prompt
     `(defhydra mz/hydra-elfeed ()
        "filter"
        ,@(mz/make-elfeed-cats (elfeed-db-get-all-tags))
-       ("*" (elfeed-search-set-filter "@6-months-ago +star") "Starred")
+       ("*" (elfeed-search-set-filter "@6-months-ago +*star") "Starred")
        ("M" elfeed-toggle-star "Mark")
        ("A" (elfeed-search-set-filter "@6-months-ago") "All")
        ("T" (elfeed-search-set-filter "@1-day-ago") "Today")
