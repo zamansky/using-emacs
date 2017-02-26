@@ -1,4 +1,3 @@
-
 #+STARTUP: overview
 
 
@@ -835,8 +834,11 @@ Eshell prompt
 		  ("j" . mz/make-and-run-elfeed-hydra)
 		  ("J" . mz/make-and-run-elfeed-hydra)
 		  )
-      )
+:config
+    (defalias 'elfeed-toggle-star
+      (elfeed-expose #'elfeed-search-toggle-all 'star))
 
+      )
 
     (use-package elfeed-goodies
       :ensure t
@@ -850,9 +852,6 @@ Eshell prompt
       (elfeed-org)
       (setq rmh-elfeed-org-files (list "~/Dropbox/shared/elfeed.org")))
 
-
-    (defalias 'elfeed-toggle-star
-      (elfeed-expose #'elfeed-search-toggle-all '*star))
 
 
 
@@ -893,7 +892,7 @@ Eshell prompt
     `(defhydra mz/hydra-elfeed ()
        "filter"
        ,@(mz/make-elfeed-cats (elfeed-db-get-all-tags))
-       ("*" (elfeed-search-set-filter "@6-months-ago +*star") "Starred")
+       ("*" (elfeed-search-set-filter "@6-months-ago +star") "Starred")
        ("M" elfeed-toggle-star "Mark")
        ("A" (elfeed-search-set-filter "@6-months-ago") "All")
        ("T" (elfeed-search-set-filter "@1-day-ago") "Today")
@@ -916,6 +915,20 @@ Eshell prompt
 #+RESULTS:
 : mz/make-and-run-elfeed-hydra
 
+* c++
+#+BEGIN_SRC emacs-lisp
+(use-package ggtags
+:ensure t
+:config 
+(add-hook 'c-mode-common-hook
+          (lambda ()
+            (when (derived-mode-p 'c-mode 'c++-mode 'java-mode)
+              (ggtags-mode 1))))
+)
+
+#+END_SRC
+
+#+RESULTS:
 
 * personal keymap
 #+BEGIN_SRC emacs-lisp
