@@ -125,6 +125,10 @@
         (delete-other-windows)
         (noflet ((switch-to-buffer-other-window (buf) (switch-to-buffer buf)))
             (org-capture)))
+
+(require 'ox-beamer)
+(use-package epresent
+:ensure t)
   #+END_SRC
 
   #+RESULTS:
@@ -459,6 +463,20 @@
 
 #+RESULTS:
 
+* DIRED
+#+BEGIN_SRC emacs-lisp
+(use-package dired+
+  :ensure t
+  :config (require 'dired+)
+  )
+
+
+(use-package dired-quick-sort
+  :ensure t
+  :config
+  (dired-quick-sort-setup))
+
+#+END_SRC
 * Stuff to refile as I do more Screencasts
 #+BEGIN_SRC emacs-lisp
 
@@ -613,10 +631,6 @@
 ))
 
 
-(use-package dired+
-  :ensure t
-  :config (require 'dired+)
-  )
 
   
 ;; font scaling
@@ -960,3 +974,5 @@ Eshell prompt
 
 #+RESULTS:
 | lambda | nil | (interactive) | (find-file ~/Dropbox/orgfiles/i.org) |
+
+#  LocalWords:  DIRED Javascript Screencasts Autocomplete

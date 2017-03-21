@@ -1,8 +1,13 @@
-;;;; Emacs Bookmark Format Version 1 ;;;; -*- coding: utf-8-emacs -*- 
+;;;; Emacs Bookmark Format Version 1 ;;;;
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("elfeed-unread"
+(("org-capture-last-stored"
+ (filename . "~/Dropbox/orgfiles/links.org")
+ (front-context-string . "**  [[http://www")
+ (rear-context-string . "ng(g)\n\n\n* Links\n")
+ (position . 218))
+("elfeed-unread"
  (location . "@6-months-ago +unread")
  (tags "unread")
  (handler . elfeed-search-bookmark-handler))
@@ -14,14 +19,13 @@
  (location . "@6-months-ago +education")
  (tags
   #("education" 0 9
-    (keymap
-     (keymap
-      (follow-link . mouse-face)
-      (mouse-3 . org-find-file-at-mouse)
-      (mouse-2 . org-open-at-mouse))
-     mouse-face highlight face
-     (org-tag org-level-2)
-     fontified nil)))
+    (fontified nil face
+	       (org-tag org-level-2)
+	       mouse-face highlight keymap
+	       (keymap
+		(follow-link . mouse-face)
+		(mouse-3 . org-find-file-at-mouse)
+		(mouse-2 . org-open-at-mouse)))))
  (handler . elfeed-search-bookmark-handler))
 ("elfeed-all"
  (location . "@6-months-ago")
