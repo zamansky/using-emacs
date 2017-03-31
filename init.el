@@ -36,7 +36,7 @@
  '(org-startup-indented t)
  '(package-selected-packages
    (quote
-    (dired-quick-sort ag ctags-update ggtags elfeed-goodies elfeed-org elfeed elfeed-web jade tern-auto-complete js2-refactor ac-js2 eshell-prompt-extras powerline shell-pop spaceline git-gutter git-gutter-fringe+ git-gutter+ eshell-git-prompt better-shell google mwe-log-commands golden-ratio openwith wgrep gnuplot-mode gnuplot sunshine google-contacts base16-theme default-text-scale ac-cider cider js2-mode virtualenvwrapper anti-zenburn-theme tango-plus-theme moe-theme material-theme monokai-theme smartparens web-mode spacemacs-theme iedit aggressive-indent expand-region aggresive-indent hungry-delete beacon htmlize ox-reveal zenburn-theme which-key use-package try org-bullets counsel color-theme auto-complete ace-window)))
+    (origami dired-quick-sort ag ctags-update ggtags elfeed-goodies elfeed-org elfeed elfeed-web jade tern-auto-complete js2-refactor ac-js2 eshell-prompt-extras powerline shell-pop spaceline git-gutter git-gutter-fringe+ git-gutter+ eshell-git-prompt better-shell google mwe-log-commands golden-ratio openwith wgrep gnuplot-mode gnuplot sunshine google-contacts base16-theme default-text-scale ac-cider cider js2-mode virtualenvwrapper anti-zenburn-theme tango-plus-theme moe-theme material-theme monokai-theme smartparens web-mode spacemacs-theme iedit aggressive-indent expand-region aggresive-indent hungry-delete beacon htmlize ox-reveal zenburn-theme which-key use-package try org-bullets counsel color-theme auto-complete ace-window)))
  '(pdf-view-midnight-colors (quote ("#DCDCCC" . "#383838")))
  '(vc-annotate-background "#2B2B2B")
  '(vc-annotate-color-map
