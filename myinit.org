@@ -997,6 +997,7 @@ Eshell prompt
 #  LocalWords:  DIRED Javascript Screencasts Autocomplete
 * IBUFFER
 #+BEGIN_SRC emacs-lisp
+   (global-set-key (kbd "C-x C-b") 'ibuffer)
     (setq ibuffer-saved-filter-groups
           (quote (("default"
                    ("dired" (mode . dired-mode))
