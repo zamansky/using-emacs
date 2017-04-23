@@ -1001,27 +1001,17 @@ Eshell prompt
    (setq ibuffer-saved-filter-groups
 	 (quote (("default"
                   ("dired" (mode . dired-mode))
-		  ("planner" (or
-                              (name . "^\\*Calendar\\*$")
-                              (name . "^diary$")
-                              (mode . muse-mode)))
 		  ("org" (name . "^.*org$"))
-                  ("emacs" (or
-                            (name . "^\\*scratch\\*$")
-                            (name . "^\\*Messages\\*$")))
+                
 		  ("web" (or (mode . web-mode) (mode . js2-mode)))
+		  ("shell" (or (mode . eshell-mode) (mode . shell-mode)))
 		  ("programming" (or
 				  (mode . python-mode)
 				  (mode . c++-mode)))
-                  ("gnus" (or
-                           (mode . message-mode)
-                           (mode . bbdb-mode)
-                           (mode . mail-mode)
-                           (mode . gnus-group-mode)
-                           (mode . gnus-summary-mode)
-                           (mode . gnus-article-mode)
-                           (name . "^\\.bbdb$")
-                           (name . "^\\.newsrc-dribble")))))))
+		                  ("emacs" (or
+                            (name . "^\\*scratch\\*$")
+                            (name . "^\\*Messages\\*$")))
+				  ))))
    (add-hook 'ibuffer-mode-hook
              (lambda ()
                (ibuffer-switch-to-saved-filter-groups "default")))
