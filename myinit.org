@@ -948,8 +948,18 @@ Eshell prompt
 
 * Dumb jump
 #+BEGIN_SRC emacs-lisp
+
 (use-package dumb-jump
-:ensure t)
+  :bind (("M-g o" . dumb-jump-go-other-window)
+         ("M-g g" . dumb-jump-go)
+         ("M-g q" . dumb-jump-quick-look))
+  :config 
+;; (setq dumb-jump-selector 'ivy) ;; (setq dumb-jump-selector 'helm)
+:init
+(dumb-jump-mode)
+  :ensure
+)
+
 
 
 #+END_SRC
