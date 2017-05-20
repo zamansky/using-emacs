@@ -237,6 +237,13 @@
 (use-package moe-theme
 :ensure t)
 
+(use-package eziam-theme
+:ensure t)
+
+(use-package alect-themes
+:ensure t)
+
+ 
 ; (load-theme 'base16-flat t)
 (moe-light)
 (use-package powerline
@@ -448,9 +455,9 @@
 (tern-ac-setup)
 ))
 
-(use-package jade
-:ensure t
-)
+;;(use-package jade
+;;:ensure t
+;;)
 
 (use-package nodejs-repl
 :ensure t
