@@ -4,7 +4,7 @@
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
 (("org-capture-last-stored"
  (filename . "~/Dropbox/orgfiles/links.org")
- (front-context-string . "**  [[https://ww")
+ (front-context-string . "**  [[https://gi")
  (rear-context-string . "ng(g)\n\n\n* Links\n")
  (position . 218))
 ("elfeed-unread"
@@ -19,14 +19,13 @@
  (location . "@6-months-ago +education")
  (tags
   #("education" 0 9
-    (keymap
-     (keymap
-      (follow-link . mouse-face)
-      (mouse-3 . org-find-file-at-mouse)
-      (mouse-2 . org-open-at-mouse))
-     mouse-face highlight face
-     (org-tag org-level-2)
-     fontified nil)))
+    (fontified nil face
+	       (org-tag org-level-2)
+	       mouse-face highlight keymap
+	       (keymap
+		(follow-link . mouse-face)
+		(mouse-3 . org-find-file-at-mouse)
+		(mouse-2 . org-open-at-mouse)))))
  (handler . elfeed-search-bookmark-handler))
 ("elfeed-all"
  (location . "@6-months-ago")

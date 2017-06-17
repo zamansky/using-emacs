@@ -1033,7 +1033,11 @@ Eshell prompt
 	       
 		 ("web" (or (mode . web-mode) (mode . js2-mode)))
 		 ("shell" (or (mode . eshell-mode) (mode . shell-mode)))
-		 ("mu4e" (name . "\*mu4e\*"))
+		 ("mu4e" (or
+
+                 (mode . mu4e-compose-mode)
+                 (name . "\*mu4e\*")
+                 ))
 		 ("programming" (or
 				 (mode . python-mode)
 				 (mode . c++-mode)))
