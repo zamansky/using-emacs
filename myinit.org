@@ -1059,3 +1059,23 @@ Eshell prompt
   (setq ibuffer-expert t)
 
 #+END_SRC
+* Prodigy
+#+BEGIN_SRC emacs-lisp
+(use-package prodigy
+:ensure t
+:config
+(prodigy-define-service
+:name "nikola"
+:command "nikola"
+:args '("auto" )
+  :cwd "/home/zamansky/gh/cestlaz.github.io"
+  :tags '(blog nikola)
+  :stop-signal 'sigkill
+  :kill-process-buffer-on-stop t)
+)
+)
+
+#+END_SRC
+
+#+RESULTS:
+: t
