@@ -1061,25 +1061,24 @@ Eshell prompt
 #+END_SRC
 * Prodigy
 #+BEGIN_SRC emacs-lisp
-  (use-package prodigy
-  :ensure t
-  :config
-  (prodigy-define-service
-  :name "nikola"
-  :command "nikola"
-  :args '("auto" )
-    :cwd "/home/zamansky/gh/cestlaz.github.io"
-    :tags '(blog nikola)
-    :stop-signal 'sigkill
-    :kill-process-buffer-on-stop t)
-  )
-
+    (use-package prodigy
+    :ensure t
+    :config
+    (prodigy-define-service
+      :name "nikola"
+      :command (lambda (&rest args)
+                 (venv-with-virtualenv "blog" (shell-command "cd ~/gh/cestlaz.github.io; nikola auto"))
+                 )
+      :cwd "/home/zamansky/gh/cestlaz.github.io"
+      :tags '(blog nikola)
+      :stop-signal 'sigkill
+      :kill-process-buffer-on-stop))
 #+END_SRC
 
 * misc
 #+BEGIN_SRC emacs-lisp
 (defun z/nikola-deploy () ""
 (interactive)
-(venv-with-virtualenv "blog" (shell-command "cd ~/gh/cestlaz.github.io; nikola github_deploy-l"))
+(venv-with-virtualenv "blog" (shell-command "cd ~/gh/cestlaz.github.io; nikola github_deploy -l"))
 )
 #+END_SRC
