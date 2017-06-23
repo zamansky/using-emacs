@@ -1066,17 +1066,17 @@ Eshell prompt
     :config
     (prodigy-define-service
       :name "nikola"
-      :command (lambda (&rest args)
-                 (venv-with-virtualenv "blog" (shell-command "(cd /home/zamansky/gh/cestlaz.github.io && nikola auto) &"))
-                 )
+      :command "nikola"
       :cwd "/home/zamansky/gh/cestlaz.github.io"
       :tags '(blog nikola)
-      :stop-signal 'sigkill
-      :kill-process-buffer-on-stop t))
+      :stop-signal 'sigkint
+      :kill-process-buffer-on-stop t
+ :init-async (lambda (done)
+                (venv-workon "blog")
+
+                )))
 #+END_SRC
 
-#+RESULTS:
-: t
 
 * misc
 #+BEGIN_SRC emacs-lisp
