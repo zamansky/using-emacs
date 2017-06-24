@@ -1067,15 +1067,17 @@ Eshell prompt
     (prodigy-define-service
       :name "nikola"
       :command "nikola"
+      :args '("auto")
       :cwd "/home/zamansky/gh/cestlaz.github.io"
       :tags '(blog nikola)
-      :stop-signal 'sigkint
+      :stop-signal 'sigint
       :kill-process-buffer-on-stop t
- :init-async (lambda (done)
-                (venv-workon "blog")
 
-                )))
+                ))
 #+END_SRC
+
+#+RESULTS:
+: t
 
 
 * misc
