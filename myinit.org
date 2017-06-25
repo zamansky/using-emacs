@@ -1084,6 +1084,9 @@ Eshell prompt
 #+BEGIN_SRC emacs-lisp
 (defun z/nikola-deploy () ""
 (interactive)
-(venv-with-virtualenv "blog" (shell-command "cd ~/gh/cestlaz.github.io; nikola github_deploy -l"))
+(venv-with-virtualenv "blog" (shell-command "cd ~/gh/cestlaz.github.io; nikola github_deploy"))
 )
 #+END_SRC
+
+#+RESULTS:
+: z/nikola-deploy
