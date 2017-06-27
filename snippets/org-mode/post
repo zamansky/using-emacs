@@ -3,10 +3,9 @@
 # key: post
 # expand-env: ((yas-indent-line 'fixed) (yas-wrap-around-region 'nil))
 # --
-
 #+BEGIN_COMMENT
-.. title: `(capitalize (replace-regexp-in-string "-\\|_" " " (file-name-base))))`
-.. slug: ${1:`(file-name-base)`}
+.. title: ${1:`(capitalize (replace-regexp-in-string "-\\|_" " " (file-name-base))))`}
+.. slug: `(file-name-base)`
 .. date: `(format-time-string "%Y-%m-%d %H:%M:%S UTC-04:00" (current-time))`
 .. tags: $2
 .. category: 
