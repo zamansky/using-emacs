@@ -1064,16 +1064,8 @@ Eshell prompt
     (use-package prodigy
     :ensure t
     :config
-    (prodigy-define-service
-      :name "nikola"
-      :command "nikola"
-      :args '("auto")
-      :cwd "/home/zamansky/gh/cestlaz.github.io"
-      :tags '(blog nikola)
-      :stop-signal 'sigint
-      :kill-process-buffer-on-stop t
-
-                ))
+    (load-if-exists "~/Dropbox/shared/prodigy-services.el")
+)
 #+END_SRC
 
 #+RESULTS:
