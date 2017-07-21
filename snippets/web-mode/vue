@@ -10,7 +10,7 @@ $0
 
 <script>
 
- export default:{
+ export default {
      name :'$1',
 	  data : function(){
 	      return {
