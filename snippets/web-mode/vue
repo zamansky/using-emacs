@@ -1,0 +1,33 @@
+# -*- mode: snippet -*-
+# name: vue
+# key: vue
+# expand-env: ((yas-indent-line 'fixed) (yas-wrap-around-region 'nil))
+# --
+<template>
+$0
+</template>
+
+
+<script>
+
+ export default:{
+     name :'$1',
+	  data : function(){
+	      return {
+		  
+	      }
+	  },
+     methods: {
+
+
+     },
+     components:{
+
+     }
+ }
+ 
+</script>
+
+<style scoped>
+
+</style>
