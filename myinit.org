@@ -1020,40 +1020,6 @@ Eshell prompt
 
 #+RESULTS:
 
-* personal keymap
-#+BEGIN_SRC emacs-lisp
-;; unset C- and M- digit keys
-(dotimes (n 10)
-  (global-unset-key (kbd (format "C-%d" n)))
-  (global-unset-key (kbd (format "M-%d" n)))
-  )
-
-
-(defun org-agenda-show-agenda-and-todo (&optional arg)
-  (interactive "P")
-  (org-agenda arg "c")
-  (org-agenda-fortnight-view))
-
-
-;; set up my own map
-(define-prefix-command 'z-map)
-(global-set-key (kbd "C-1") 'z-map)
-
-(define-key z-map (kbd "m") 'mu4e)
-(define-key z-map (kbd "e") 'bjm/elfeed-load-db-and-open)
-(define-key z-map (kbd "1") 'org-global-cycle)
-(define-key z-map (kbd "a") 'org-agenda-show-agenda-and-todo)
-(define-key z-map (kbd "g") 'counsel-ag)
-
-(define-key z-map (kbd "s") 'flyspell-correct-word-before-point)
-(define-key z-map (kbd "i") (lambda () (interactive) (find-file "~/Dropbox/orgfiles/i.org")))
-(define-key z-map (kbd "f") 'origami-toggle-node)
-#+END_SRC
-
-#+RESULTS:
-: origami-toggle-node
-
-#  LocalWords:  DIRED Javascript Screencasts Autocomplete
 * IBUFFER
 #+BEGIN_SRC emacs-lisp
   (global-set-key (kbd "C-x C-b") 'ibuffer)
@@ -1109,7 +1075,51 @@ Eshell prompt
 (interactive)
 (venv-with-virtualenv "blog" (shell-command "cd ~/gh/cestlaz.github.io; nikola github_deploy"))
 )
+
+(defun z/swap-windows ()
+""
+(interactive)
+(ace-swap-window)
+(aw-flip-window)
+)
+
 #+END_SRC
 
 #+RESULTS:
 : z/nikola-deploy
+* personal keymap
+#+BEGIN_SRC emacs-lisp
+;; unset C- and M- digit keys
+(dotimes (n 10)
+  (global-unset-key (kbd (format "C-%d" n)))
+  (global-unset-key (kbd (format "M-%d" n)))
+  )
+
+
+(defun org-agenda-show-agenda-and-todo (&optional arg)
+  (interactive "P")
+  (org-agenda arg "c")
+  (org-agenda-fortnight-view))
+
+
+;; set up my own map
+(define-prefix-command 'z-map)
+(global-set-key (kbd "C-1") 'z-map)
+
+(define-key z-map (kbd "m") 'mu4e)
+(define-key z-map (kbd "e") 'bjm/elfeed-load-db-and-open)
+(define-key z-map (kbd "1") 'org-global-cycle)
+(define-key z-map (kbd "a") 'org-agenda-show-agenda-and-todo)
+(define-key z-map (kbd "g") 'counsel-ag)
+
+(define-key z-map (kbd "s") 'flyspell-correct-word-before-point)
+(define-key z-map (kbd "i") (lambda () (interactive) (find-file "~/Dropbox/orgfiles/i.org")))
+(define-key z-map (kbd "f") 'origami-toggle-node)
+(define-key z-map (kbd "w") 'z/swap-windows)
+
+#+END_SRC
+
+#+RESULTS:
+: origami-toggle-node
+
+#  LocalWords:  DIRED Javascript Screencasts Autocomplete
