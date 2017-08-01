@@ -538,8 +538,7 @@
    (ditaa . t)
    (dot . t)
    (org . t)
-      (sh . t )
-   (shell . t )
+       (shell . t )
 (latex . t )
    ))
 
