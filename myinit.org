@@ -127,8 +127,6 @@
             (org-capture)))
 
 (require 'ox-beamer)
-(use-package epresent
-:ensure t)
   #+END_SRC
 
   #+RESULTS:
