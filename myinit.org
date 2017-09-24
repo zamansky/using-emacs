@@ -256,7 +256,7 @@
   : t
 
 * Reveal.js
-  #+BEGIN_SRC emacs-lisp
+  #+BEGIN_SRC emacs-lisp :tangle no
     (use-package ox-reveal
     :ensure ox-reveal)
 
