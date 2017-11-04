@@ -1132,6 +1132,18 @@ Eshell prompt
 
 #+RESULTS:
 : z/nikola-deploy
+* Haskell 
+#+BEGIN_SRC emacs-lisp
+(use-package haskell-mode
+:ensure t
+:config
+(require 'haskell-interactive-mode)
+(require 'haskell-process)
+(add-hook 'haskell-mode-hook 'interactive-haskell-mode)
+
+)
+
+#+END_SRC
 * personal keymap
 #+BEGIN_SRC emacs-lisp
 ;; unset C- and M- digit keys
@@ -1168,3 +1180,17 @@ Eshell prompt
 : origami-toggle-node
 
 #  LocalWords:  DIRED Javascript Screencasts Autocomplete
+* Haskell
+#+BEGIN_SRC emacs-lisp
+(use-package dante
+  :ensure t
+  :after haskell-mode
+  :commands 'dante-mode
+  :init
+  (add-hook 'haskell-mode-hook 'dante-mode)
+  (add-hook 'haskell-mode-hook 'flycheck-mode))
+
+(add-hook 'dante-mode-hook
+   '(lambda () (flycheck-add-next-checker 'haskell-dante
+                '(warning . haskell-hlint))))
+#+END_SRC
