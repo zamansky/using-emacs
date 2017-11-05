@@ -862,7 +862,7 @@ Eshell prompt
 #+RESULTS:
 : t
 * Elfeed
-#+BEGIN_SRC emacs-lisp 
+#+BEGIN_SRC emacs-lisp :tangle no
 
     (setq elfeed-db-directory "~/Dropbox/shared/elfeeddb")
 
