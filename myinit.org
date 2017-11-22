@@ -1212,3 +1212,11 @@ Eshell prompt
 #+END_SRC
 
 #+RESULTS:
+* Regex
+#+BEGIN_SRC emacs-lisp
+(use-package pcre2el
+:ensure t
+:config 
+(pcre-mode)
+)
+#+END_SRC
