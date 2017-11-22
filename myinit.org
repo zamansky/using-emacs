@@ -1203,3 +1203,12 @@ Eshell prompt
 
 
 #+END_SRC
+* Wgrep
+#+BEGIN_SRC emacs-lisp
+(use-package wgrep
+:ensure t
+)
+
+#+END_SRC
+
+#+RESULTS:
