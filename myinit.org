@@ -1203,3 +1203,11 @@ Eshell prompt
 
 
 #+END_SRC
+* Music
+#+BEGIN_SRC emacs-lisp
+(use-package simple-mpc
+:ensure t)
+(use-package mingus
+:ensure t)
+
+#+END_SRC
