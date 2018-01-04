@@ -216,7 +216,7 @@
 * Themes and modeline
   #+BEGIN_SRC emacs-lisp
 
-    (use-package color-theme
+    (use-package color-theme-modern
       :ensure t)
 
     ;(use-package zenburn-theme
@@ -228,23 +228,19 @@
     ;  ;:init
     ;  ;(load-theme 'spacemacs-dark t)
     ;  )
+    (use-package base16-theme
+    :ensure t
+    )
+    (use-package moe-theme
+    :ensure t)
+    
 
-(use-package base16-theme
-:ensure t
-)
-
-(use-package moe-theme
-:ensure t)
-
-(use-package eziam-theme
-:ensure t)
-
-(use-package alect-themes
-:ensure t)
+    (use-package alect-themes
+    :ensure t)
 
  
 ; (load-theme 'base16-flat t)
-(moe-dark)
+;(moe-dark)
 (use-package powerline
 :ensure t
 :config
@@ -468,19 +464,38 @@
 ;;:ensure t
 ;;)
 
-(use-package nodejs-repl
-:ensure t
-)
+;; use web-mode for .jsx files
+(add-to-list 'auto-mode-alist '("\\.jsx$" . web-mode))
 
-(add-hook 'js-mode-hook
-          (lambda ()
-            (define-key js-mode-map (kbd "C-x C-e") 'nodejs-repl-send-last-sexp)
-            (define-key js-mode-map (kbd "C-c C-r") 'nodejs-repl-send-region)
-            (define-key js-mode-map (kbd "C-c C-l") 'nodejs-repl-load-file)
-            (define-key js-mode-map (kbd "C-c C-z") 'nodejs-repl-switch-to-repl)))
-#+END_SRC
 
-#+RESULTS:
+;; turn on flychecking globally
+(add-hook 'after-init-hook #'global-flycheck-mode)
+
+;; disable jshint since we prefer eslint checking
+(setq-default flycheck-disabled-checkers
+  (append flycheck-disabled-checkers
+    '(javascript-jshint)))
+
+;; use eslint with web-mode for jsx files
+(flycheck-add-mode 'javascript-eslint 'web-mode)
+
+;; customize flycheck temp file prefix
+(setq-default flycheck-temp-prefix ".flycheck")
+
+;; disable json-jsonlist checking for json files
+(setq-default flycheck-disabled-checkers
+  (append flycheck-disabled-checkers
+    '(json-jsonlist)))
+
+;; adjust indents for web-mode to 2 spaces
+(defun my-web-mode-hook ()
+  "Hooks for Web mode. Adjust indents"
+  ;;; http://web-mode.org/
+  (setq web-mode-markup-indent-offset 2)
+  (setq web-mode-css-indent-offset 2)
+  (setq web-mode-code-indent-offset 2))
+(add-hook 'web-mode-hook  'my-web-mode-hook)
+#+END_SRC 
 
 * DIRED
 #+BEGIN_SRC emacs-lisp
@@ -495,7 +510,7 @@
 #+BEGIN_SRC emacs-lisp
 
 (setq user-full-name "Mike Zamansky"
-			user-mail-address "zamansky@gmail.com")
+			user-mail-address "mz631@hunter.cuny.edu")
 ;;--------------------------------------------------------------------------
 
 
@@ -545,10 +560,10 @@
   (projectile-global-mode)
 (setq projectile-completion-system 'ivy))
 
-(use-package counsel-projectile
-  :ensure t
-  :config
-  (counsel-projectile-on))
+;(use-package counsel-projectile
+;  :ensure t
+;  :config
+;  (counsel-projectile-on))
 
 (use-package smartparens
 :ensure t
