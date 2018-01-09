@@ -1173,7 +1173,7 @@ Eshell prompt
 ;; set up my own map
 (define-prefix-command 'z-map)
 (global-set-key (kbd "C-1") 'z-map)
-
+(define-key z-map (kbd "c") 'multiple-cursors-hydra/body)
 (define-key z-map (kbd "m") 'mu4e)
 (define-key z-map (kbd "e") 'bjm/elfeed-load-db-and-open)
 (define-key z-map (kbd "1") 'org-global-cycle)
@@ -1243,3 +1243,33 @@ Eshell prompt
 :ensure t)
 
 #+END_SRC
+* Multiple Cursors Hydra
+#+BEGIN_SRC emacs-lisp
+
+(defhydra multiple-cursors-hydra (:hint nil)
+  "
+     ^Up^            ^Down^        ^Other^
+----------------------------------------------
+[_p_]   Next    [_n_]   Next    [_l_] Edit lines
+[_P_]   Skip    [_N_]   Skip    [_a_] Mark all
+[_M-p_] Unmark  [_M-n_] Unmark  [_r_] Mark by regexp
+^ ^             ^ ^             [_q_] Quit
+"
+  ("l" mc/edit-lines :exit t)
+  ("a" mc/mark-all-like-this :exit t)
+  ("n" mc/mark-next-like-this)
+  ("N" mc/skip-to-next-like-this)
+  ("M-n" mc/unmark-next-like-this)
+  ("p" mc/mark-previous-like-this)
+  ("P" mc/skip-to-previous-like-this)
+  ("M-p" mc/unmark-previous-like-this)
+  ("r" mc/mark-all-in-region-regexp :exit t)
+  ("q" nil)
+
+  ("<mouse-1>" mc/add-cursor-on-click)
+  ("<down-mouse-1>" ignore)
+  ("<drag-mouse-1>" ignore))
+#+END_SRC
+
+#+RESULTS:
+: multiple-cursors-hydra/body
