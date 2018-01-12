@@ -127,6 +127,11 @@
             (org-capture)))
 
 (require 'ox-beamer)
+
+; for inserting inactive dates
+(define-key org-mode-map (kbd "C-c >") (lambda () (interactive (org-time-stamp-inactive))))
+
+
   #+END_SRC
 
   #+RESULTS:
