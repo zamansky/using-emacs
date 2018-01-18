@@ -1,7 +1,11 @@
 #+STARTUP: overview
 
 
+* repos
+#+BEGIN_SRC emacs-lisp
+(add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
 
+#+END_SRC
 * interface tweaks
 #+BEGIN_SRC emacs-lisp
 (setq inhibit-startup-message t)
