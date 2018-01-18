@@ -1282,3 +1282,10 @@ Eshell prompt
 
 #+RESULTS:
 : multiple-cursors-hydra/body
+* Atomic Chrome (edit in emacs)
+#+BEGIN_SRC emacs-lisp
+(use-package atomic-chrome
+:ensure t
+:config (atomic-chrome-start-server))
+
+#+END_SRC
