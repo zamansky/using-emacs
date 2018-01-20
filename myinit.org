@@ -682,12 +682,17 @@
 
   
 ;; font scaling
-(use-package default-text-scale
-  :ensure t
-  :config
-  (global-set-key (kbd "C-M-=") 'default-text-scale-increase)
-  (global-set-key (kbd "C-M--") 'default-text-scale-decrease))
-
+;(use-package default-text-scale
+;  :ensure t
+; ; :config
+;  (global-set-key (kbd "C-M-=") 'default-text-scale-increase)
+;  (global-set-key (kbd "C-M--") 'default-text-scale-decrease))
+(use-package frame-cmds :ensure t)
+(load-file "/home/zamansky/Dropbox/shared/zoom-frm.el")
+(define-key ctl-x-map [(control ?+)] 'zoom-in/out)
+(define-key ctl-x-map [(control ?-)] 'zoom-in/out)
+(define-key ctl-x-map [(control ?=)] 'zoom-in/out)
+(define-key ctl-x-map [(control ?0)] 'zoom-in/out)
 
 
 #+END_SRC
