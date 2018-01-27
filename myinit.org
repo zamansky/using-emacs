@@ -246,12 +246,12 @@
 
         (use-package alect-themes
         :ensure t)
-        ;  problems due to melpa not loading emacswiki stiff
-        ;(use-package zerodark-theme
-        ;:ensure t)
+         
+        (use-package zerodark-theme
+        :ensure t)
 
-        ;(load-theme 'zerodark t)
-        ;(zerodark-setup-modeline-format)
+        (load-theme 'zerodark t)
+        (zerodark-setup-modeline-format)
  
     ; (load-theme 'base16-flat t)
     ;(moe-dark)
@@ -514,13 +514,17 @@
 * DIRED
 #+BEGIN_SRC emacs-lisp
 ; wiki melpa problem
-;(use-package dired+
-;  :ensure t
-;  :config (require 'dired+)
-;  )
+(use-package dired+
+  :ensure t
+  :config (require 'dired+)
+  )
 
 
 #+END_SRC
+
+#+RESULTS:
+: t
+
 * Stuff to refile as I do more Screencasts
 #+BEGIN_SRC emacs-lisp
 
@@ -684,20 +688,19 @@
 
   
   ;; font scaling
-  (use-package default-text-scale
-    :ensure t
-   :config
-    (global-set-key (kbd "C-M-=") 'default-text-scale-increase)
-    (global-set-key (kbd "C-M--") 'default-text-scale-decrease))
+  ;;(use-package default-text-scale
+  ;;  :ensure t
+  ;; :config
+  ;;  (global-set-key (kbd "C-M-=") 'default-text-scale-increase)
+  ;;  (global-set-key (kbd "C-M--") 'default-text-scale-decrease))
 
 
-  ;; problems due to melpa not loadingf from wiki
-  ;; (use-package frame-cmds :ensure t)
-  ;; (load-file "/home/zamansky/Dropbox/shared/zoom-frm.el")
-  ;; (define-key ctl-x-map [(control ?+)] 'zoom-in/out)
-  ;; (define-key ctl-x-map [(control ?-)] 'zoom-in/out)
-  ;; (define-key ctl-x-map [(control ?=)] 'zoom-in/out)
-  ;; (define-key ctl-x-map [(control ?0)] 'zoom-in/out)
+  (use-package frame-cmds :ensure t)
+  (load-file "/home/zamansky/Dropbox/shared/zoom-frm.el")
+  (define-key ctl-x-map [(control ?+)] 'zoom-in/out)
+  (define-key ctl-x-map [(control ?-)] 'zoom-in/out)
+  (define-key ctl-x-map [(control ?=)] 'zoom-in/out)
+  (define-key ctl-x-map [(control ?0)] 'zoom-in/out)
 
 
 #+END_SRC
