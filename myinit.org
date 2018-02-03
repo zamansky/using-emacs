@@ -1235,7 +1235,7 @@ Eshell prompt
 #+BEGIN_SRC emacs-lisp
 (use-package shell-pop
 :ensure t
-  :bind (("C-t" . shell-pop))
+  :bind (("s-t" . shell-pop))
   :config
   (setq shell-pop-shell-type (quote ("ehell" "eshell" (lambda nil (eshell)))))
   (setq shell-pop-term-shell "eshell")
