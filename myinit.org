@@ -33,7 +33,7 @@
   Org bullets makes things look pretty
   #+BEGIN_SRC emacs-lisp
 
-    (setenv "BROWSER" "chromium-browser")
+    (setenv "BROWSER" "google-chrome-stable")
 
         (use-package org-bullets
         :ensure t
@@ -1305,4 +1305,11 @@ Eshell prompt
 :ensure t
 :config (atomic-chrome-start-server))
 (setq atomic-chrome-buffer-open-style 'frame)
+#+END_SRC
+* Misc
+#+BEGIN_SRC emacs-lisp
+(setq browse-url-browser-function 'browse-url-generic
+      browse-url-generic-program "google-chrome-stable")
+
+
 #+END_SRC
