@@ -810,11 +810,15 @@ Git gutter:
 #+END_SRC
 * Better Shell
 #+BEGIN_SRC emacs-lisp :tangle no
-(use-package better-shell
-    :ensure t
-    :bind (("C-'" . better-shell-shell)
-           ("C-;" . better-shell-remote-open)))
+  (use-package better-shell
+      :ensure t
+      :bind (("C-\"" . better-shell-shell)
+             ("C-:" . better-shell-remote-open)))
 #+END_SRC
+
+#+RESULTS:
+: better-shell-remote-open
+
 * eshell stuff
 #+BEGIN_SRC emacs-lisp
 
