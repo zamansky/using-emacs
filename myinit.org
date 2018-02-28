@@ -1340,6 +1340,11 @@ Eshell prompt
 :config (atomic-chrome-start-server))
 (setq atomic-chrome-buffer-open-style 'frame)
 #+END_SRC
+* PDF tools
+#+BEGIN_SRC emacs-lisp
+(use-package pdf-tools)
+(require 'pdf-tools)
+#+END_SRC
 * Misc
 #+BEGIN_SRC emacs-lisp
 (setq browse-url-browser-function 'browse-url-generic
