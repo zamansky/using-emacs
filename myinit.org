@@ -1342,8 +1342,14 @@ Eshell prompt
 #+END_SRC
 * PDF tools
 #+BEGIN_SRC emacs-lisp
-(use-package pdf-tools)
+(use-package pdf-tools
+:ensure t)
+(use-package org-pdfview
+:ensure t)
+
 (require 'pdf-tools)
+(require 'org-pdfview)
+
 #+END_SRC
 * Misc
 #+BEGIN_SRC emacs-lisp
