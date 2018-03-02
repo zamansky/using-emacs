@@ -1356,5 +1356,6 @@ Eshell prompt
 (setq browse-url-browser-function 'browse-url-generic
       browse-url-generic-program "google-chrome-stable")
 
+(setq auto-window-vscroll nil)
 
 #+END_SRC
