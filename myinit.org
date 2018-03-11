@@ -61,13 +61,6 @@
             ((agenda "")
             (alltodo "")))))
 
-            (use-package org-ac
-          	  :ensure t
-          	  :init (progn
-          		  (require 'org-ac)
-          		  (org-ac/config-default)
-          		  ))
-
             (global-set-key (kbd "C-c c") 'org-capture)
 
             (setq org-agenda-files (list "~/Dropbox/orgfiles/gcal.org"
@@ -212,15 +205,56 @@
   #+END_SRC
 
 * Autocomplete
-  #+BEGIN_SRC emacs-lisp
-  (use-package auto-complete
-  :ensure t
-  :init
-  (progn
-    (ac-config-default)
-    (global-auto-complete-mode t)
-    ))
+  #+BEGIN_SRC emacs-lisp  :tangle no
+     (use-package auto-complete 
+     :ensure t
+     :init
+     (progn
+     (ac-config-default)
+       (global-auto-complete-mode t)
+      ))
   #+END_SRC
+* Company
+#+BEGIN_SRC emacs-lisp
+(use-package company
+:ensure t
+:config
+(setq company-idle-delay 0)
+(setq company-minimum-prefix-length 3)
+
+(global-company-mode t)
+)
+
+(use-package company-irony
+:ensure t
+:config 
+(add-to-list 'company-backends 'company-irony)
+
+)
+
+(use-package irony
+:ensure t
+:config
+(add-hook 'c++-mode-hook 'irony-mode)
+(add-hook 'c-mode-hook 'irony-mode)
+(add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
+)
+
+(defun my/python-mode-hook ()
+  (add-to-list 'company-backends 'company-jedi))
+
+(add-hook 'python-mode-hook 'my/python-mode-hook)
+(use-package company-jedi
+    :ensure t
+    :config
+    (add-hook 'python-mode-hook 'jedi:setup)
+       )
+
+(defun my/python-mode-hook ()
+  (add-to-list 'company-backends 'company-jedi))
+
+(add-hook 'python-mode-hook 'my/python-mode-hook)
+#+END_SRC
 
 * Themes and modeline
   #+BEGIN_SRC emacs-lisp
@@ -292,26 +326,20 @@
 * Python
   #+BEGIN_SRC emacs-lisp
 
-    (setq py-python-command "python3")
-    (setq python-shell-interpreter "python3")
+        (setq py-python-command "python3")
+        (setq python-shell-interpreter "python3")
+ 
 
-      (use-package jedi
-        :ensure t
-        :init
-        (add-hook 'python-mode-hook 'jedi:setup)
-        (add-hook 'python-mode-hook 'jedi:ac-setup))
+            (use-package elpy
+            :ensure t
+            :config 
+            (elpy-enable))
 
-
-        (use-package elpy
-        :ensure t
-        :config 
-        (elpy-enable))
-
-    (use-package virtualenvwrapper
-      :ensure t
-      :config
-      (venv-initialize-interactive-shells)
-      (venv-initialize-eshell))
+        (use-package virtualenvwrapper
+          :ensure t
+          :config
+          (venv-initialize-interactive-shells)
+          (venv-initialize-eshell))
 
   #+END_SRC
 
@@ -325,7 +353,12 @@
       :init
         (yas-global-mode 1))
 
+    (use-package yasnippet-snippets
+      :ensure t)
   #+END_SRC
+
+  #+RESULTS:
+
 * Undo Tree
   #+BEGIN_SRC emacs-lisp
     (use-package undo-tree
@@ -475,7 +508,7 @@
 (add-hook 'js-mode-hook (lambda () (tern-mode t)))
 (add-hook 'js2-mode-hook (lambda () (tern-mode t)))
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
-(tern-ac-setup)
+;;(tern-ac-setup)
 ))
 
 ;;(use-package jade
@@ -629,31 +662,7 @@
 
 
 
-    (use-package cider
-      :ensure t 
-      :config
-      ; this is to make cider-jack-in-cljs work
-      (setq cider-cljs-lein-repl
-          "(do (require 'figwheel-sidecar.repl-api)
-               (figwheel-sidecar.repl-api/start-figwheel!)
-               (figwheel-sidecar.repl-api/cljs-repl))")
-
-      )
-
-    (use-package ac-cider
-      :ensure t
-      :config
-      (add-hook 'cider-mode-hook 'ac-flyspell-workaround)
-      (add-hook 'cider-mode-hook 'ac-cider-setup)
-      (add-hook 'cider-repl-mode-hook 'ac-cider-setup)
-      (eval-after-load "auto-complete"
-        '(progn
-           (add-to-list 'ac-modes 'cider-mode)
-           (add-to-list 'ac-modes 'cider-repl-mode)))
-      )
-
   
-    (global-set-key (kbd "M-g M-g") 'hydra-git-gutter/body)
     ;; font scaling
     (use-package default-text-scale
       :ensure t
@@ -671,70 +680,6 @@
 
 
 #+END_SRC
-* git
-#+BEGIN_SRC emacs-lisp
-  (use-package magit
-    :ensure t
-    :init
-    (progn
-    (bind-key "C-x g" 'magit-status)
-    ))
-
-    (use-package git-gutter
-    :ensure t
-    :init
-    (global-git-gutter-mode +1))
-
-
-
-    (use-package git-timemachine
-    :ensure t
-    )
-  (defhydra hydra-git-gutter (:body-pre (git-gutter-mode 1)
-                              :hint nil)
-    "
-  Git gutter:
-    _j_: next hunk        _s_tage hunk     _q_uit
-    _k_: previous hunk    _r_evert hunk    _Q_uit and deactivate git-gutter
-    ^ ^                   _p_opup hunk
-    _h_: first hunk
-    _l_: last hunk        set start _R_evision
-  "
-    ("j" git-gutter:next-hunk)
-    ("k" git-gutter:previous-hunk)
-    ("h" (progn (goto-char (point-min))
-                (git-gutter:next-hunk 1)))
-    ("l" (progn (goto-char (point-min))
-                (git-gutter:previous-hunk 1)))
-    ("s" git-gutter:stage-hunk)
-    ("r" git-gutter:revert-hunk)
-    ("p" git-gutter:popup-hunk)
-    ("R" git-gutter:set-start-revision)
-    ("q" nil :color blue)
-    ("Q" (progn (git-gutter-mode -1)
-                ;; git-gutter-fringe doesn't seem to
-                ;; clear the markup right away
-                (sit-for 0.1)
-                (git-gutter:clear))
-         :color blue))
-
-
-
-#+END_SRC
-* Load other files
-   #+BEGIN_SRC emacs-lisp
-     (defun load-if-exists (f)
-       "load the elisp file only if it exists and is readable"
-       (if (file-readable-p f)
-           (load-file f)))
-
-     (load-if-exists "~/Dropbox/shared/mu4econfig.el")
-     (load-if-exists "~/Dropbox/shared/not-for-github.el")
-
-   #+END_SRC
-
-   #+RESULTS:
-   : t
 * Hydra
 #+BEGIN_SRC emacs-lisp
   (use-package hydra 
@@ -811,6 +756,72 @@
 
 #+RESULTS:
 
+
+* git
+#+BEGIN_SRC emacs-lisp
+  (use-package magit
+    :ensure t
+    :init
+    (progn
+    (bind-key "C-x g" 'magit-status)
+    ))
+
+    (use-package git-gutter
+    :ensure t
+    :init
+    (global-git-gutter-mode +1))
+
+    (global-set-key (kbd "M-g M-g") 'hydra-git-gutter/body)
+
+
+    (use-package git-timemachine
+    :ensure t
+    )
+  (defhydra hydra-git-gutter (:body-pre (git-gutter-mode 1)
+                              :hint nil)
+    "
+  Git gutter:
+    _j_: next hunk        _s_tage hunk     _q_uit
+    _k_: previous hunk    _r_evert hunk    _Q_uit and deactivate git-gutter
+    ^ ^                   _p_opup hunk
+    _h_: first hunk
+    _l_: last hunk        set start _R_evision
+  "
+    ("j" git-gutter:next-hunk)
+    ("k" git-gutter:previous-hunk)
+    ("h" (progn (goto-char (point-min))
+                (git-gutter:next-hunk 1)))
+    ("l" (progn (goto-char (point-min))
+                (git-gutter:previous-hunk 1)))
+    ("s" git-gutter:stage-hunk)
+    ("r" git-gutter:revert-hunk)
+    ("p" git-gutter:popup-hunk)
+    ("R" git-gutter:set-start-revision)
+    ("q" nil :color blue)
+    ("Q" (progn (git-gutter-mode -1)
+                ;; git-gutter-fringe doesn't seem to
+                ;; clear the markup right away
+                (sit-for 0.1)
+                (git-gutter:clear))
+         :color blue))
+
+
+
+#+END_SRC
+* Load other files
+   #+BEGIN_SRC emacs-lisp
+     (defun load-if-exists (f)
+       "load the elisp file only if it exists and is readable"
+       (if (file-readable-p f)
+           (load-file f)))
+
+     (load-if-exists "~/Dropbox/shared/mu4econfig.el")
+     (load-if-exists "~/Dropbox/shared/not-for-github.el")
+
+   #+END_SRC
+
+   #+RESULTS:
+   : t
 * Testing Stuff
 #+BEGIN_SRC emacs-lisp
 (add-hook 'org-mode-hook 'turn-on-flyspell)
