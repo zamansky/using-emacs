@@ -353,6 +353,10 @@
   :config
   (global-hungry-delete-mode))
   
+
+  (use-package multiple-cursors
+  :ensure t)
+
   ; expand the marked region in semantic increments (negative prefix to reduce region)
   (use-package expand-region
   :ensure t
@@ -528,213 +532,195 @@
 * Stuff to refile as I do more Screencasts
 #+BEGIN_SRC emacs-lisp
 
-  (setq user-full-name "Mike Zamansky"
-                          user-mail-address "mz631@hunter.cuny.edu")
-  ;;--------------------------------------------------------------------------
+    ;;--------------------------------------------------------------------------
+    ;; latex
+    (use-package tex
+    :ensure auctex)
 
-
-  (global-set-key (kbd "\e\ei")
-                  (lambda () (interactive) (find-file "~/Dropbox/orgfiles/i.org")))
-
-  (global-set-key (kbd "\e\el")
-                  (lambda () (interactive) (find-file "~/Dropbox/orgfiles/links.org")))
-
-  (global-set-key (kbd "\e\ec")
-                  (lambda () (interactive) (find-file "~/.emacs.d/myinit.org")))
-
-
-  ;;--------------------------------------------------------------------------
-  ;; latex
-  (use-package tex
-  :ensure auctex)
-
-  (defun tex-view ()
-      (interactive)
-      (tex-send-command "evince" (tex-append tex-print-file ".pdf")))
-
-
-
-
+    (defun tex-view ()
+        (interactive)
+        (tex-send-command "evince" (tex-append tex-print-file ".pdf")))
   ;; babel stuff
 
-  (org-babel-do-load-languages
-   'org-babel-load-languages
-   '((python . t)
-     (emacs-lisp . t)
-     (C . t)
-  (js . t)
-     (ditaa . t)
-     (dot . t)
-     (org . t)
-         (shell . t )
-  (latex . t )
-     ))
-
-
-
+    (org-babel-do-load-languages
+     'org-babel-load-languages
+     '((python . t)
+       (emacs-lisp . t)
+       (C . t)
+    (js . t)
+       (ditaa . t)
+       (dot . t)
+       (org . t)
+           (shell . t )
+    (latex . t )
+       ))
   ;; projectile
-  (use-package projectile
+    (use-package projectile
+      :ensure t
+      :config
+      (projectile-global-mode)
+    (setq projectile-completion-system 'ivy))
+
+    ;; (use-package counsel-projectile
+    ;;   :ensure t
+    ;;   :config
+    ;;   (counsel-projectile-on)q)
+  
+    (use-package smartparens
     :ensure t
     :config
-    (projectile-global-mode)
-  (setq projectile-completion-system 'ivy))
-
-  ;(use-package counsel-projectile
-  ;  :ensure t
-  ;  :config
-  ;  (counsel-projectile-on))
-
-  (use-package smartparens
-  :ensure t
-  :config
-  (use-package smartparens-config)
-  (use-package smartparens-html)
-  (use-package smartparens-python)
-  (use-package smartparens-latex)
-  (smartparens-global-mode t)
-  (show-smartparens-global-mode t)
-  :bind
-  ( ("C-<down>" . sp-down-sexp)
-   ("C-<up>"   . sp-up-sexp)
-   ("M-<down>" . sp-backward-down-sexp)
-   ("M-<up>"   . sp-backward-up-sexp)
-  ("C-M-a" . sp-beginning-of-sexp)
-   ("C-M-e" . sp-end-of-sexp)
+    (use-package smartparens-config)
+    (use-package smartparens-html)
+    (use-package smartparens-python)
+    (use-package smartparens-latex)
+    (smartparens-global-mode t)
+    (show-smartparens-global-mode t)
+    :bind
+    ( ("C-<down>" . sp-down-sexp)
+     ("C-<up>"   . sp-up-sexp)
+     ("M-<down>" . sp-backward-down-sexp)
+     ("M-<up>"   . sp-backward-up-sexp)
+    ("C-M-a" . sp-beginning-of-sexp)
+     ("C-M-e" . sp-end-of-sexp)
 
 
 
-   ("C-M-f" . sp-forward-sexp)
-   ("C-M-b" . sp-backward-sexp)
+     ("C-M-f" . sp-forward-sexp)
+     ("C-M-b" . sp-backward-sexp)
 
-   ("C-M-n" . sp-next-sexp)
-   ("C-M-p" . sp-previous-sexp)
+     ("C-M-n" . sp-next-sexp)
+     ("C-M-p" . sp-previous-sexp)
 
-   ("C-S-f" . sp-forward-symbol)
-   ("C-S-b" . sp-backward-symbol)
+     ("C-S-f" . sp-forward-symbol)
+     ("C-S-b" . sp-backward-symbol)
 
-   ("C-<right>" . sp-forward-slurp-sexp)
-   ("M-<right>" . sp-forward-barf-sexp)
-   ("C-<left>"  . sp-backward-slurp-sexp)
-   ("M-<left>"  . sp-backward-barf-sexp)
+     ("C-<right>" . sp-forward-slurp-sexp)
+     ("M-<right>" . sp-forward-barf-sexp)
+     ("C-<left>"  . sp-backward-slurp-sexp)
+     ("M-<left>"  . sp-backward-barf-sexp)
 
-   ("C-M-t" . sp-transpose-sexp)
-   ("C-M-k" . sp-kill-sexp)
-   ("C-k"   . sp-kill-hybrid-sexp)
-   ("M-k"   . sp-backward-kill-sexp)
-   ("C-M-w" . sp-copy-sexp)
+     ("C-M-t" . sp-transpose-sexp)
+     ("C-M-k" . sp-kill-sexp)
+     ("C-k"   . sp-kill-hybrid-sexp)
+     ("M-k"   . sp-backward-kill-sexp)
+     ("C-M-w" . sp-copy-sexp)
 
-   ("C-M-d" . delete-sexp)
+     ("C-M-d" . delete-sexp)
 
-   ("M-<backspace>" . backward-kill-word)
-   ("C-<backspace>" . sp-backward-kill-word)
-   ([remap sp-backward-kill-word] . backward-kill-word)
+     ("M-<backspace>" . backward-kill-word)
+     ("C-<backspace>" . sp-backward-kill-word)
+     ([remap sp-backward-kill-word] . backward-kill-word)
 
-   ("M-[" . sp-backward-unwrap-sexp)
-   ("M-]" . sp-unwrap-sexp)
+     ("M-[" . sp-backward-unwrap-sexp)
+     ("M-]" . sp-unwrap-sexp)
 
-   ("C-x C-t" . sp-transpose-hybrid-sexp)
+     ("C-x C-t" . sp-transpose-hybrid-sexp)
 
-   ("C-c ("  . wrap-with-parens)
-   ("C-c ["  . wrap-with-brackets)
-   ("C-c {"  . wrap-with-braces)
-   ("C-c '"  . wrap-with-single-quotes)
-   ("C-c \"" . wrap-with-double-quotes)
-   ("C-c _"  . wrap-with-underscores)
-  ("C-c `"  . wrap-with-back-quotes)
-  ))
+     ("C-c ("  . wrap-with-parens)
+     ("C-c ["  . wrap-with-brackets)
+     ("C-c {"  . wrap-with-braces)
+     ("C-c '"  . wrap-with-single-quotes)
+     ("C-c \"" . wrap-with-double-quotes)
+     ("C-c _"  . wrap-with-underscores)
+    ("C-c `"  . wrap-with-back-quotes)
+    ))
 
-  ;;--------------------------------------------
-
-
-
-  (use-package cider
-    :ensure t 
-    :config
-    ; this is to make cider-jack-in-cljs work
-    (setq cider-cljs-lein-repl
-        "(do (require 'figwheel-sidecar.repl-api)
-             (figwheel-sidecar.repl-api/start-figwheel!)
-             (figwheel-sidecar.repl-api/cljs-repl))")
-
-    )
-
-  (use-package ac-cider
-    :ensure t
-    :config
-    (add-hook 'cider-mode-hook 'ac-flyspell-workaround)
-    (add-hook 'cider-mode-hook 'ac-cider-setup)
-    (add-hook 'cider-repl-mode-hook 'ac-cider-setup)
-    (eval-after-load "auto-complete"
-      '(progn
-         (add-to-list 'ac-modes 'cider-mode)
-         (add-to-list 'ac-modes 'cider-repl-mode)))
-    )
-
-  (use-package magit
-  :ensure t
-  :init
-  (progn
-  (bind-key "C-x g" 'magit-status)
-  ))
-
-  (use-package git-gutter
-  :ensure t
-  :init
-  (global-git-gutter-mode +1))
+    ;;--------------------------------------------
 
 
 
-  (use-package git-timemachine
-  :ensure t
-  )
-(defhydra hydra-git-gutter (:body-pre (git-gutter-mode 1)
-                            :hint nil)
-  "
-Git gutter:
-  _j_: next hunk        _s_tage hunk     _q_uit
-  _k_: previous hunk    _r_evert hunk    _Q_uit and deactivate git-gutter
-  ^ ^                   _p_opup hunk
-  _h_: first hunk
-  _l_: last hunk        set start _R_evision
-"
-  ("j" git-gutter:next-hunk)
-  ("k" git-gutter:previous-hunk)
-  ("h" (progn (goto-char (point-min))
-              (git-gutter:next-hunk 1)))
-  ("l" (progn (goto-char (point-min))
-              (git-gutter:previous-hunk 1)))
-  ("s" git-gutter:stage-hunk)
-  ("r" git-gutter:revert-hunk)
-  ("p" git-gutter:popup-hunk)
-  ("R" git-gutter:set-start-revision)
-  ("q" nil :color blue)
-  ("Q" (progn (git-gutter-mode -1)
-              ;; git-gutter-fringe doesn't seem to
-              ;; clear the markup right away
-              (sit-for 0.1)
-              (git-gutter:clear))
-       :color blue))
+    (use-package cider
+      :ensure t 
+      :config
+      ; this is to make cider-jack-in-cljs work
+      (setq cider-cljs-lein-repl
+          "(do (require 'figwheel-sidecar.repl-api)
+               (figwheel-sidecar.repl-api/start-figwheel!)
+               (figwheel-sidecar.repl-api/cljs-repl))")
+
+      )
+
+    (use-package ac-cider
+      :ensure t
+      :config
+      (add-hook 'cider-mode-hook 'ac-flyspell-workaround)
+      (add-hook 'cider-mode-hook 'ac-cider-setup)
+      (add-hook 'cider-repl-mode-hook 'ac-cider-setup)
+      (eval-after-load "auto-complete"
+        '(progn
+           (add-to-list 'ac-modes 'cider-mode)
+           (add-to-list 'ac-modes 'cider-repl-mode)))
+      )
+
+  
+    (global-set-key (kbd "M-g M-g") 'hydra-git-gutter/body)
+    ;; font scaling
+    (use-package default-text-scale
+      :ensure t
+     :config
+      (global-set-key (kbd "C-M-=") 'default-text-scale-increase)
+      (global-set-key (kbd "C-M--") 'default-text-scale-decrease))
 
 
-  (global-set-key (kbd "M-g M-g") 'hydra-git-gutter/body)
-  ;; font scaling
-  (use-package default-text-scale
-    :ensure t
-   :config
-    (global-set-key (kbd "C-M-=") 'default-text-scale-increase)
-    (global-set-key (kbd "C-M--") 'default-text-scale-decrease))
-
-
-  ;; (use-package frame-cmds :ensure t)
-  ;; (load-file "/home/zamansky/Dropbox/shared/zoom-frm.el")
-  ;; (define-key ctl-x-map [(control ?+)] 'zoom-in/out)
-  ;; (define-key ctl-x-map [(control ?-)] 'zoom-in/out)
-  ;; (define-key ctl-x-map [(control ?=)] 'zoom-in/out)
-  (define-key ctl-x-map [(control ?0)] 'zoom-in/out)
+    ;; (use-package frame-cmds :ensure t)
+    ;; (load-file "/home/zamansky/Dropbox/shared/zoom-frm.el")
+    ;; (define-key ctl-x-map [(control ?+)] 'zoom-in/out)
+    ;; (define-key ctl-x-map [(control ?-)] 'zoom-in/out)
+    ;; (define-key ctl-x-map [(control ?=)] 'zoom-in/out)
+    (define-key ctl-x-map [(control ?0)] 'zoom-in/out)
 
 
 #+END_SRC
+* git
+#+BEGIN_SRC emacs-lisp
+  (use-package magit
+    :ensure t
+    :init
+    (progn
+    (bind-key "C-x g" 'magit-status)
+    ))
 
+    (use-package git-gutter
+    :ensure t
+    :init
+    (global-git-gutter-mode +1))
+
+
+
+    (use-package git-timemachine
+    :ensure t
+    )
+  (defhydra hydra-git-gutter (:body-pre (git-gutter-mode 1)
+                              :hint nil)
+    "
+  Git gutter:
+    _j_: next hunk        _s_tage hunk     _q_uit
+    _k_: previous hunk    _r_evert hunk    _Q_uit and deactivate git-gutter
+    ^ ^                   _p_opup hunk
+    _h_: first hunk
+    _l_: last hunk        set start _R_evision
+  "
+    ("j" git-gutter:next-hunk)
+    ("k" git-gutter:previous-hunk)
+    ("h" (progn (goto-char (point-min))
+                (git-gutter:next-hunk 1)))
+    ("l" (progn (goto-char (point-min))
+                (git-gutter:previous-hunk 1)))
+    ("s" git-gutter:stage-hunk)
+    ("r" git-gutter:revert-hunk)
+    ("p" git-gutter:popup-hunk)
+    ("R" git-gutter:set-start-revision)
+    ("q" nil :color blue)
+    ("Q" (progn (git-gutter-mode -1)
+                ;; git-gutter-fringe doesn't seem to
+                ;; clear the markup right away
+                (sit-for 0.1)
+                (git-gutter:clear))
+         :color blue))
+
+
+
+#+END_SRC
 * Load other files
    #+BEGIN_SRC emacs-lisp
      (defun load-if-exists (f)
@@ -796,6 +782,31 @@ Git gutter:
 	     ("l" (or )rg-capture-goto-last-stored "Last Capture"))
 
      ))
+
+(defhydra multiple-cursors-hydra (:hint nil)
+  "
+     ^Up^            ^Down^        ^Other^
+----------------------------------------------
+[_p_]   Next    [_n_]   Next    [_l_] Edit lines
+[_P_]   Skip    [_N_]   Skip    [_a_] Mark all
+[_M-p_] Unmark  [_M-n_] Unmark  [_r_] Mark by regexp
+^ ^             ^ ^             [_q_] Quit
+"
+  ("l" mc/edit-lines :exit t)
+  ("a" mc/mark-all-like-this :exit t)
+  ("n" mc/mark-next-like-this)
+  ("N" mc/skip-to-next-like-this)
+  ("M-n" mc/unmark-next-like-this)
+  ("p" mc/mark-previous-like-this)
+  ("P" mc/skip-to-previous-like-this)
+  ("M-p" mc/unmark-previous-like-this)
+  ("r" mc/mark-all-in-region-regexp :exit t)
+  ("q" nil)
+
+  ("<mouse-1>" mc/add-cursor-on-click)
+  ("<down-mouse-1>" ignore)
+  ("<drag-mouse-1>" ignore))
+
 #+END_SRC
 
 #+RESULTS:
@@ -836,7 +847,7 @@ Git gutter:
 				 "ncftp" "pine" "tin" "trn" "elm" "vim"
 				 "nmtui" "alsamixer" "htop" "el" "elinks"
 				 ))
-  (setq eshell-visual-subcommands '(("git" "log" "diff" "show")))
+                                 (setq eshell-visual-subcommands '(("git" "log" "diff" "show")))
   (setq eshell-list-files-after-cd t)
   (defun eshell-clear-buffer ()
     "Clear terminal"
@@ -1245,26 +1256,30 @@ Eshell prompt
 (define-key z-map (kbd "f") 'origami-toggle-node)
 (define-key z-map (kbd "w") 'z/swap-windows)
 
+
+  (setq user-full-name "Mike Zamansky"
+                          user-mail-address "mz631@hunter.cuny.edu")
+  ;;--------------------------------------------------------------------------
+
+
+  (global-set-key (kbd "\e\ei")
+                  (lambda () (interactive) (find-file "~/Dropbox/orgfiles/i.org")))
+
+  (global-set-key (kbd "\e\el")
+                  (lambda () (interactive) (find-file "~/Dropbox/orgfiles/links.org")))
+
+  (global-set-key (kbd "\e\ec")
+                  (lambda () (interactive) (find-file "~/.emacs.d/myinit.org")))
+
+
+
+
 #+END_SRC
 
 #+RESULTS:
 : origami-toggle-node
 
 #  LocalWords:  DIRED Javascript Screencasts Autocomplete
-* Haskell
-#+BEGIN_SRC emacs-lisp
-(use-package dante
-  :ensure t
-  :after haskell-mode
-  :commands 'dante-mode
-  :init
-  (add-hook 'haskell-mode-hook 'dante-mode)
-  (add-hook 'haskell-mode-hook 'flycheck-mode))
-
-(add-hook 'dante-mode-hook
-   '(lambda () (flycheck-add-next-checker 'haskell-dante
-                '(warning . haskell-hlint))))
-#+END_SRC
 * shell-pop 
 #+BEGIN_SRC emacs-lisp
 (use-package shell-pop
@@ -1303,36 +1318,6 @@ Eshell prompt
 :ensure t)
 
 #+END_SRC
-* Multiple Cursors Hydra
-#+BEGIN_SRC emacs-lisp
-
-(defhydra multiple-cursors-hydra (:hint nil)
-  "
-     ^Up^            ^Down^        ^Other^
-----------------------------------------------
-[_p_]   Next    [_n_]   Next    [_l_] Edit lines
-[_P_]   Skip    [_N_]   Skip    [_a_] Mark all
-[_M-p_] Unmark  [_M-n_] Unmark  [_r_] Mark by regexp
-^ ^             ^ ^             [_q_] Quit
-"
-  ("l" mc/edit-lines :exit t)
-  ("a" mc/mark-all-like-this :exit t)
-  ("n" mc/mark-next-like-this)
-  ("N" mc/skip-to-next-like-this)
-  ("M-n" mc/unmark-next-like-this)
-  ("p" mc/mark-previous-like-this)
-  ("P" mc/skip-to-previous-like-this)
-  ("M-p" mc/unmark-previous-like-this)
-  ("r" mc/mark-all-in-region-regexp :exit t)
-  ("q" nil)
-
-  ("<mouse-1>" mc/add-cursor-on-click)
-  ("<down-mouse-1>" ignore)
-  ("<drag-mouse-1>" ignore))
-#+END_SRC
-
-#+RESULTS:
-: multiple-cursors-hydra/body
 * Atomic Chrome (edit in emacs)
 #+BEGIN_SRC emacs-lisp
 (use-package atomic-chrome
