@@ -34,7 +34,7 @@
  '(org-startup-folded 'overview)
  '(org-startup-indented t)
  '(package-selected-packages
-   '(company-jedi jedi-core jedi ac-irony irony counsel-projectile ox-pandoc atomic-chrome clojure-mode-extra-font-locking font-lock+ zerodark-theme prodigy origami ag ctags-update ggtags elfeed-goodies elfeed-org elfeed elfeed-web jade tern-auto-complete js2-refactor ac-js2 eshell-prompt-extras powerline shell-pop spaceline git-gutter git-gutter-fringe+ git-gutter+ eshell-git-prompt better-shell google mwe-log-commands golden-ratio openwith wgrep gnuplot-mode gnuplot sunshine google-contacts base16-theme default-text-scale ac-cider cider js2-mode virtualenvwrapper anti-zenburn-theme tango-plus-theme moe-theme material-theme monokai-theme smartparens web-mode spacemacs-theme iedit aggressive-indent expand-region aggresive-indent hungry-delete beacon htmlize ox-reveal zenburn-theme which-key use-package try org-bullets counsel color-theme auto-complete ace-window))
+   '(circe-notifications circe auto-yasnippet company-jedi jedi-core jedi ac-irony irony counsel-projectile ox-pandoc atomic-chrome clojure-mode-extra-font-locking font-lock+ zerodark-theme prodigy origami ag ctags-update ggtags elfeed-goodies elfeed-org elfeed elfeed-web jade tern-auto-complete js2-refactor ac-js2 eshell-prompt-extras powerline shell-pop spaceline git-gutter git-gutter-fringe+ git-gutter+ eshell-git-prompt better-shell google mwe-log-commands golden-ratio openwith wgrep gnuplot-mode gnuplot sunshine google-contacts base16-theme default-text-scale ac-cider cider js2-mode virtualenvwrapper anti-zenburn-theme tango-plus-theme moe-theme material-theme monokai-theme smartparens web-mode spacemacs-theme iedit aggressive-indent expand-region aggresive-indent hungry-delete beacon htmlize ox-reveal zenburn-theme which-key use-package try org-bullets counsel color-theme auto-complete ace-window))
  '(tramp-syntax 'default nil (tramp))
  '(vc-annotate-color-map
    '((20 . "#BC8383")
@@ -61,6 +61,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(default ((((class color) (min-colors 89)) (:background "#333333" :foreground "#afafaf"))))
  '(aw-leading-char-face ((t (:inherit ace-jump-face-foreground :height 3.0)))))
 (put 'narrow-to-region 'disabled nil)
 (put 'set-goal-column 'disabled nil)

@@ -1,6 +1,4 @@
 #+STARTUP: overview
-
-
 * repos
 #+BEGIN_SRC emacs-lisp
 (add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
@@ -764,7 +762,6 @@
 
 #+RESULTS:
 
-
 * git
 #+BEGIN_SRC emacs-lisp
   (use-package magit
@@ -1099,6 +1096,13 @@ Eshell prompt
 
 #+RESULTS:
 
+* Clojure
+#+BEGIN_SRC emacs-lisp
+(use-package cider
+:ensure t)
+
+
+#+END_SRC
 * Dumb jump
 #+BEGIN_SRC emacs-lisp
 
@@ -1265,7 +1269,6 @@ Eshell prompt
 (global-set-key (kbd "C-1") 'z-map)
 (define-key z-map (kbd "c") 'multiple-cursors-hydra/body)
 (define-key z-map (kbd "m") 'mu4e)
-(define-key z-map (kbd "e") 'bjm/elfeed-load-db-and-open)
 (define-key z-map (kbd "1") 'org-global-cycle)
 (define-key z-map (kbd "a") 'org-agenda-show-agenda-and-todo)
 (define-key z-map (kbd "g") 'counsel-ag)
@@ -1354,6 +1357,11 @@ Eshell prompt
 (require 'pdf-tools)
 (require 'org-pdfview)
 
+#+END_SRC
+* auto-yasnippet
+#+BEGIN_SRC emacs-lisp
+(use-package auto-yasnippet
+:ensure t)
 #+END_SRC
 * Misc
 #+BEGIN_SRC emacs-lisp
