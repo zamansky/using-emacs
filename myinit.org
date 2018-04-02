@@ -1252,10 +1252,10 @@ Eshell prompt
 * personal keymap
 #+BEGIN_SRC emacs-lisp
 ;; unset C- and M- digit keys
-(dotimes (n 10)
-  (global-unset-key (kbd (format "C-%d" n)))
-  (global-unset-key (kbd (format "M-%d" n)))
-  )
+;(dotimes (n 10)
+;  (global-unset-key (kbd (format "C-%d" n)))
+;  (global-unset-key (kbd (format "M-%d" n)))
+;  )
 
 
 (defun org-agenda-show-agenda-and-todo (&optional arg)
@@ -1266,7 +1266,7 @@ Eshell prompt
 
 ;; set up my own map
 (define-prefix-command 'z-map)
-(global-set-key (kbd "C-1") 'z-map)
+(global-set-key (kbd "C-z") 'z-map) ;; was C-1
 (define-key z-map (kbd "c") 'multiple-cursors-hydra/body)
 (define-key z-map (kbd "m") 'mu4e)
 (define-key z-map (kbd "1") 'org-global-cycle)
