@@ -1295,6 +1295,7 @@ Eshell prompt
 
 
 
+(global-set-key [mouse-3] 'flyspell-correct-word-before-point)
 
 #+END_SRC
 
@@ -1324,6 +1325,12 @@ Eshell prompt
 #+END_SRC
 
 #+RESULTS:
+* Silversearcher
+#+BEGIN_SRC emacs-lisp
+(use-package ag
+:ensure t)
+
+#+END_SRC
 * Regex
 #+BEGIN_SRC emacs-lisp
 (use-package pcre2el
