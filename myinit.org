@@ -259,9 +259,9 @@
 (add-hook 'python-mode-hook 'my/python-mode-hook)
 
 ;; company box mode
-(use-package company-box
-:ensure t
-  :hook (company-mode . company-box-mode)) 
+;(use-package company-box
+;:ensure t
+;  :hook (company-mode . company-box-mode)) 
 
 
 #+END_SRC
