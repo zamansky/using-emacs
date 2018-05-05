@@ -258,6 +258,9 @@
 
 (add-hook 'python-mode-hook 'my/python-mode-hook)
 
+;; company box mode
+(use-package company-box
+  :hook (company-mode . company-box-mode))
 
 
 #+END_SRC
@@ -1321,7 +1324,10 @@ Eshell prompt
 (use-package wgrep
 :ensure t
 )
-
+(use-package wgrep-ag
+:ensure t
+)
+(require 'wgrep-ag)
 #+END_SRC
 
 #+RESULTS:
