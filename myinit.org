@@ -260,10 +260,13 @@
 
 ;; company box mode
 (use-package company-box
-  :hook (company-mode . company-box-mode))
+:ensure t
+  :hook (company-mode . company-box-mode)) 
 
 
 #+END_SRC
+
+#+RESULTS:
 
 * Themes and modeline
   #+BEGIN_SRC emacs-lisp
