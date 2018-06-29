@@ -269,11 +269,11 @@
 #+RESULTS:
 
 * Themes and modeline
-  #+BEGIN_SRC emacs-lisp
+  #+BEGIN_SRC emacs-lisp 
 
         (use-package color-theme-modern
           :ensure t)
-
+    
         ;(use-package zenburn-theme
         ;  :ensure t
         ;  :config (load-theme 'zenburn t))
@@ -288,29 +288,20 @@
         )
         (use-package moe-theme
         :ensure t)
-    
+
 
         (use-package alect-themes
         :ensure t)
-         
-        (use-package zerodark-theme
-        :ensure t)
 
-        (load-theme 'zerodark t)
-        (zerodark-setup-modeline-format)
- 
-    ; (load-theme 'base16-flat t)
-    ;(moe-dark)
-    ;; (use-package powerline
-    ;; :ensure t
-    ;; :config
-    ;; (powerline-moe-theme)
-    ;; )
+        ;(use-package zerodark-theme
+        ;:ensure t)
+
+        ;;(load-theme 'zerodark t)
+        ;;(zerodark-setup-modeline-format)
 
   #+END_SRC
 
-  #+RESULTS:
-  : t
+
 
 * Reveal.js
   #+BEGIN_SRC emacs-lisp :tangle no
@@ -1378,6 +1369,13 @@ Eshell prompt
 #+BEGIN_SRC emacs-lisp
 (use-package auto-yasnippet
 :ensure t)
+#+END_SRC
+* mu4e-conversation
+#+BEGIN_SRC emacs-lisp
+(use-package mu4e-conversation
+:ensure t
+)
+
 #+END_SRC
 * Misc
 #+BEGIN_SRC emacs-lisp
