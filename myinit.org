@@ -1296,7 +1296,7 @@ Eshell prompt
   (global-set-key (kbd "\e\ec")
                   (lambda () (interactive) (find-file "~/.emacs.d/myinit.org")))
 
-
+(global-set-key (kbd "<end>") 'move-end-of-line)
 
 (global-set-key [mouse-3] 'flyspell-correct-word-before-point)
 
