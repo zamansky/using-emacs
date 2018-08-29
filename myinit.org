@@ -127,7 +127,7 @@
         (noflet ((switch-to-buffer-other-window (buf) (switch-to-buffer buf)))
             (org-capture)))
 
-(require 'ox-beamer)
+; (require 'ox-beamer)
 ; for inserting inactive dates
 (define-key org-mode-map (kbd "C-c >") (lambda () (interactive (org-time-stamp-inactive))))
 
@@ -309,7 +309,7 @@
 
 
 * Reveal.js
-  #+BEGIN_SRC emacs-lisp 
+  #+BEGIN_SRC emacs-lisp  :tangle no
   (use-package ox-reveal
   :ensure t
   :config
@@ -593,12 +593,12 @@
        (ditaa . t)
        (dot . t)
        (org . t)
-           (shell . t )
     (latex . t )
        ))
   ;; projectile
     (use-package projectile
       :ensure t
+      :bind ("C-c p" . projectile-command-map)
       :config
       (projectile-global-mode)
     (setq projectile-completion-system 'ivy))
