@@ -37,7 +37,7 @@
   :ensure t
   :pin org)
 
-    (setenv "BROWSER" "google-chrome-stable")
+    (setenv "BROWSER" "chromium-browser")
 
         (use-package org-bullets
         :ensure t
@@ -1386,7 +1386,7 @@ Eshell prompt
 * Misc
 #+BEGIN_SRC emacs-lisp
 (setq browse-url-browser-function 'browse-url-generic
-      browse-url-generic-program "google-chrome-stable")
+      browse-url-generic-program "chromium-browser")
 
 (setq auto-window-vscroll nil)
 
