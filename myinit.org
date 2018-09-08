@@ -304,6 +304,9 @@
         ;;(load-theme 'zerodark t)
         ;;(zerodark-setup-modeline-format)
 
+(use-package poet-theme
+:ensure t)
+(load-theme 'poet t)
   #+END_SRC
 
 
