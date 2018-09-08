@@ -25,7 +25,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
-   '("13d20048c12826c7ea636fbe513d6f24c0d43709a761052adbca052708798ce3" "e61752b5a3af12be08e99d076aedadd76052137560b7e684a8be2f8d2958edc3" default))
+   '("eacee5f1c2f46185d6f089d97b7953bd9fc5d5b773f72cc76c9fcb556eeba174" "13d20048c12826c7ea636fbe513d6f24c0d43709a761052adbca052708798ce3" "e61752b5a3af12be08e99d076aedadd76052137560b7e684a8be2f8d2958edc3" default))
  '(org-default-notes-file (concat org-directory "/notes.org"))
  '(org-directory "~/Dropbox/orgfiles")
  '(org-export-html-postamble nil)
