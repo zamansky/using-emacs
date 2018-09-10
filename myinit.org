@@ -56,6 +56,7 @@
             (setq org-file-apps
   		(append '(
           		  ("\\.pdf\\'" . "evince %s")
+ ("\\.x?html?\\'" . "/usr/bin/chromium-browser %s")
           		  ) org-file-apps ))
 
             (global-set-key "\C-ca" 'org-agenda)
