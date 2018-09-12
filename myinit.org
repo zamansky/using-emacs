@@ -299,7 +299,7 @@
         (use-package alect-themes
         :ensure t)
 
-        (use-pakcage poet-theme
+        (use-package poet-theme
         :ensure t
         )
         ;(use-package zerodark-theme
