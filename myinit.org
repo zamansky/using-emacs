@@ -69,6 +69,7 @@
             (global-set-key (kbd "C-c c") 'org-capture)
 
             (setq org-agenda-files (list "~/Dropbox/orgfiles/gcal.org"
+            "~/Dropbox/orgfiles/soe-cal.org"
           			       "~/Dropbox/orgfiles/i.org"
           			       "~/Dropbox/orgfiles/schedule.org"))
             (setq org-capture-templates
