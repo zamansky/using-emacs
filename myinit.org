@@ -133,6 +133,8 @@
 ; for inserting inactive dates
 (define-key org-mode-map (kbd "C-c >") (lambda () (interactive (org-time-stamp-inactive))))
 
+(use-package htmlize :ensure t)
+
 
   #+END_SRC
 
