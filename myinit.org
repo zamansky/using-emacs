@@ -79,7 +79,7 @@
           				   "* %? %^L %^g \n%T" :prepend t)
           				  ("b" "Blog idea" entry (file+headline "~/Dropbox/orgfiles/i.org" "Blog Topics:")
           				   "* %?\n%T" :prepend t)
-          				  ("t" "To Do Item" entry (file+headline "~/Dropbox/orgfiles/i.org" "To Do")
+          				  ("t" "To Do Item" entry (file+headline "~/Dropbox/orgfiles/i.org" "To Do and Notes")
           				   "* TODO %?\n%u" :prepend t)
   					  ("m" "Mail To Do" entry (file+headline "~/Dropbox/orgfiles/i.org" "To Do")
   					   "* TODO %a\n %?" :prepend t)
