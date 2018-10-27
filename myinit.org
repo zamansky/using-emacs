@@ -93,7 +93,7 @@
         ;; 			     "* TODO %?\n:PROPERTIES:\nDEADLINE: %^T \n\n:END:\n %i\n")
         ;; 			    ("l" "Link" entry (file+headline "~/Dropbox/orgfiles/links.org" "Links")
         ;; 			     "* %? %^L %^g \n%T" :prepend t)
-        ;; 			    ("b" "Blog idea" entry (file+headline "~/Dropbox/orgfiles/i.org" "Blog Topics:")
+        ;; 			    ("b" "Blog idea" entry (file+headline "~/Dropbox/orgfiles/i.org" "POSTS:")
         ;; 			     "* %?\n%T" :prepend t)
         ;; 			    ("t" "To Do Item" entry (file+headline "~/Dropbox/orgfiles/i.org" "To Do")
         ;; 			     "* TODO %?\n%u" :prepend t)
@@ -283,9 +283,11 @@
         (use-package color-theme-modern
           :ensure t)
     
-        ;(use-package zenburn-theme
-        ;  :ensure t
-        ;  :config (load-theme 'zenburn t))
+        (use-package zenburn-theme
+          :ensure t
+          ; :config (load-theme 'zenburn t))
+          )
+
 
         ;(use-package spacemacs-theme
         ;  :ensure t
@@ -305,8 +307,8 @@
         (use-package poet-theme
         :ensure t
         )
-        ;(use-package zerodark-theme
-        ;:ensure t)
+        (use-package zerodark-theme
+        :ensure t)
 
         ;;(load-theme 'zerodark t)
         ;;(zerodark-setup-modeline-format)
@@ -1277,6 +1279,7 @@ Eshell prompt
 ;; set up my own map
 (define-prefix-command 'z-map)
 (global-set-key (kbd "C-z") 'z-map) ;; was C-1
+(define-key z-map (kbd "k" 'compile'))
 (define-key z-map (kbd "c") 'multiple-cursors-hydra/body)
 (define-key z-map (kbd "m") 'mu4e)
 (define-key z-map (kbd "1") 'org-global-cycle)
