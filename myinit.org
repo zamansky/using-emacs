@@ -1279,7 +1279,7 @@ Eshell prompt
 ;; set up my own map
 (define-prefix-command 'z-map)
 (global-set-key (kbd "C-z") 'z-map) ;; was C-1
-(define-key z-map (kbd "k" 'compile))
+(define-key z-map (kbd "k") 'compile)
 (define-key z-map (kbd "c") 'multiple-cursors-hydra/body)
 (define-key z-map (kbd "m") 'mu4e)
 (define-key z-map (kbd "1") 'org-global-cycle)
