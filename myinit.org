@@ -60,7 +60,7 @@
           		  ) org-file-apps ))
 
             (global-set-key "\C-ca" 'org-agenda)
-
+            (setq org-agenda-start-on-weekday nil)
             (setq org-agenda-custom-commands
             '(("c" "Simple agenda view"
             ((agenda "")
@@ -597,6 +597,7 @@
      'org-babel-load-languages
      '((python . t)
        (emacs-lisp . t)
+(shell . t)
        (C . t)
     (js . t)
        (ditaa . t)
