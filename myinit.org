@@ -45,7 +45,7 @@
         (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 
             (custom-set-variables
-             '(org-directory "~/Dropbox/orgfiles")
+             '(org-directory "~/Sync/orgfiles")
              '(org-default-notes-file (concat org-directory "/notes.org"))
              '(org-export-html-postamble nil)
              '(org-hide-leading-stars t)
@@ -68,41 +68,41 @@
 
             (global-set-key (kbd "C-c c") 'org-capture)
 
-            (setq org-agenda-files (list "~/Dropbox/orgfiles/gcal.org"
-            "~/Dropbox/orgfiles/soe-cal.org"
-          			       "~/Dropbox/orgfiles/i.org"
-          			       "~/Dropbox/orgfiles/schedule.org"))
+            (setq org-agenda-files (list "~/Sync/orgfiles/gcal.org"
+            "~/Sync/orgfiles/soe-cal.org"
+          			       "~/Sync/orgfiles/i.org"
+          			       "~/Sync/orgfiles/schedule.org"))
             (setq org-capture-templates
-          			  '(("a" "Appointment" entry (file  "~/Dropbox/orgfiles/gcal.org" )
+          			  '(("a" "Appointment" entry (file  "~/Sync/orgfiles/gcal.org" )
           				   "* %?\n\n%^T\n\n:PROPERTIES:\n\n:END:\n\n")
-          				  ("l" "Link" entry (file+headline "~/Dropbox/orgfiles/links.org" "Links")
+          				  ("l" "Link" entry (file+headline "~/Sync/orgfiles/links.org" "Links")
           				   "* %? %^L %^g \n%T" :prepend t)
-          				  ("b" "Blog idea" entry (file+headline "~/Dropbox/orgfiles/i.org" "Blog Topics:")
+          				  ("b" "Blog idea" entry (file+headline "~/Sync/orgfiles/i.org" "Blog Topics:")
           				   "* %?\n%T" :prepend t)
-          				  ("t" "To Do Item" entry (file+headline "~/Dropbox/orgfiles/i.org" "To Do and Notes")
+          				  ("t" "To Do Item" entry (file+headline "~/Sync/orgfiles/i.org" "To Do and Notes")
           				   "* TODO %?\n%u" :prepend t)
-  					  ("m" "Mail To Do" entry (file+headline "~/Dropbox/orgfiles/i.org" "To Do and Notes")
+  					  ("m" "Mail To Do" entry (file+headline "~/Sync/orgfiles/i.org" "To Do and Notes")
   					   "* TODO %a\n %?" :prepend t)
-  					  ("g" "GMail To Do" entry (file+headline "~/Dropbox/orgfiles/i.org" "To Do and Notes")
+  					  ("g" "GMail To Do" entry (file+headline "~/Sync/orgfiles/i.org" "To Do and Notes")
   					   "* TODO %^L\n %?" :prepend t)
-  					  ("n" "Note" entry (file+headline "~/Dropbox/orgfiles/i.org" "Notes")
+  					  ("n" "Note" entry (file+headline "~/Sync/orgfiles/i.org" "Notes")
           				   "* %?\n%u" :prepend t)
   					  ))
             ;; (setq org-capture-templates
-        ;; 		    '(("a" "Appointment" entry (file  "~/Dropbox/orgfiles/gcal.org" )
+        ;; 		    '(("a" "Appointment" entry (file  "~/Sync/orgfiles/gcal.org" )
         ;; 			     "* TODO %?\n:PROPERTIES:\nDEADLINE: %^T \n\n:END:\n %i\n")
-        ;; 			    ("l" "Link" entry (file+headline "~/Dropbox/orgfiles/links.org" "Links")
+        ;; 			    ("l" "Link" entry (file+headline "~/Sync/orgfiles/links.org" "Links")
         ;; 			     "* %? %^L %^g \n%T" :prepend t)
-        ;; 			    ("b" "Blog idea" entry (file+headline "~/Dropbox/orgfiles/i.org" "POSTS:")
+        ;; 			    ("b" "Blog idea" entry (file+headline "~/Sync/orgfiles/i.org" "POSTS:")
         ;; 			     "* %?\n%T" :prepend t)
-        ;; 			    ("t" "To Do Item" entry (file+headline "~/Dropbox/orgfiles/i.org" "To Do")
+        ;; 			    ("t" "To Do Item" entry (file+headline "~/Sync/orgfiles/i.org" "To Do")
         ;; 			     "* TODO %?\n%u" :prepend t)
-        ;; 			    ("n" "Note" entry (file+headline "~/Dropbox/orgfiles/i.org" "Note space")
+        ;; 			    ("n" "Note" entry (file+headline "~/Sync/orgfiles/i.org" "Note space")
         ;; 			     "* %?\n%u" :prepend t)
 
         ;; 			    ("j" "Journal" entry (file+datetree "~/Dropbox/journal.org")
         ;; 			     "* %?\nEntered on %U\n  %i\n  %a")
-            ;;                                ("s" "Screencast" entry (file "~/Dropbox/orgfiles/screencastnotes.org")
+            ;;                                ("s" "Screencast" entry (file "~/Sync/orgfiles/screencastnotes.org")
             ;;                                "* %?\n%i\n")))
 
 
@@ -832,8 +832,8 @@
        (if (file-readable-p f)
            (load-file f)))
 
-     (load-if-exists "~/Dropbox/shared/mu4econfig.el")
-     (load-if-exists "~/Dropbox/shared/not-for-github.el")
+     (load-if-exists "~/Sync/shared/mu4econfig.el")
+     (load-if-exists "~/Sync/shared/not-for-github.el")
 
    #+END_SRC
 
@@ -974,7 +974,7 @@ Eshell prompt
 * Elfeed
 #+BEGIN_SRC emacs-lisp :tangle no
 
-    (setq elfeed-db-directory "~/Dropbox/shared/elfeeddb")
+    (setq elfeed-db-directory "~/Sync/shared/elfeeddb")
 
 
     (defun elfeed-mark-all-as-read ()
@@ -1028,7 +1028,7 @@ Eshell prompt
       :ensure t
       :config
       (elfeed-org)
-      (setq rmh-elfeed-org-files (list "~/Dropbox/shared/elfeed.org")))
+      (setq rmh-elfeed-org-files (list "~/Sync/shared/elfeed.org")))
 
 
 
@@ -1182,7 +1182,7 @@ Eshell prompt
     (use-package prodigy
     :ensure t
     :config
-    (load-if-exists "~/Dropbox/shared/prodigy-services.el")
+    (load-if-exists "~/Sync/shared/prodigy-services.el")
 )
 #+END_SRC
 
@@ -1287,7 +1287,7 @@ Eshell prompt
 (define-key z-map (kbd "g") 'counsel-ag)
 
 (define-key z-map (kbd "s") 'flyspell-correct-word-before-point)
-(define-key z-map (kbd "i") (lambda () (interactive) (find-file "~/Dropbox/orgfiles/i.org")))
+(define-key z-map (kbd "i") (lambda () (interactive) (find-file "~/Sync/orgfiles/i.org")))
 (define-key z-map (kbd "f") 'origami-toggle-node)
 (define-key z-map (kbd "w") 'z/swap-windows)
 
@@ -1298,10 +1298,10 @@ Eshell prompt
 
 
   (global-set-key (kbd "\e\ei")
-                  (lambda () (interactive) (find-file "~/Dropbox/orgfiles/i.org")))
+                  (lambda () (interactive) (find-file "~/Sync/orgfiles/i.org")))
 
   (global-set-key (kbd "\e\el")
-                  (lambda () (interactive) (find-file "~/Dropbox/orgfiles/links.org")))
+                  (lambda () (interactive) (find-file "~/Sync/orgfiles/links.org")))
 
   (global-set-key (kbd "\e\ec")
                   (lambda () (interactive) (find-file "~/.emacs.d/myinit.org")))
@@ -1355,6 +1355,18 @@ Eshell prompt
 (pcre-mode)
 )
 #+END_SRC
+* Eyebrowse
+#+BEGIN_SRC emacs-lisp
+(use-package eyebrowse
+:ensure t
+:config 
+(eyebrowse-mode)
+)
+
+#+END_SRC
+
+#+RESULTS:
+
 * Music
 #+BEGIN_SRC emacs-lisp
 (use-package simple-mpc
