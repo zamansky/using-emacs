@@ -86,7 +86,7 @@
   					  ("g" "GMail To Do" entry (file+headline "~/Sync/orgfiles/i.org" "To Do and Notes")
   					   "* TODO %^L\n %?" :prepend t)
   					  ("n" "Note" entry (file+headline "~/Sync/orgfiles/i.org" "Notes")
-          				   "* %?\n%u" :prepend t)
+          				   "* %u %? " :prepend t)
   					  ))
             ;; (setq org-capture-templates
         ;; 		    '(("a" "Appointment" entry (file  "~/Sync/orgfiles/gcal.org" )
