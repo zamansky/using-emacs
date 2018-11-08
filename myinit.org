@@ -1357,7 +1357,7 @@ Eshell prompt
 )
 #+END_SRC
 * Eyebrowse
-#+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC emacs-lisp :tangle no
 (use-package eyebrowse
 :ensure t
 :config 
