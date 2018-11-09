@@ -37,7 +37,7 @@
  '(org-startup-folded 'overview)
  '(org-startup-indented t)
  '(package-selected-packages
-   '(eyebrowse zenburn-theme 0blayout ample-zen-theme poet-theme epresent ox-reveal mu4e-conversation zerodark-theme yasnippet-snippets which-key wgrep-ag web-mode virtualenvwrapper use-package undo-tree try treemacs-projectile tern-auto-complete smartparens simple-mpc shell-switcher shell-pop prodigy pcre2el origami org-pdfview org-gcal org-bullets noflet mu4e-alert moe-theme mingus js2-refactor irony-eldoc iedit hungry-delete haskell-mode git-timemachine git-gutter ggtags expand-region emmet-mode elpy dumb-jump default-text-scale counsel company-jedi company-irony color-theme-modern circe-notifications cider beacon base16-theme auto-yasnippet auctex atomic-chrome alect-themes ag ac-js2))
+   '(easy-kill eyebrowse zenburn-theme 0blayout ample-zen-theme poet-theme epresent ox-reveal mu4e-conversation zerodark-theme yasnippet-snippets which-key wgrep-ag web-mode virtualenvwrapper use-package undo-tree try treemacs-projectile tern-auto-complete smartparens simple-mpc shell-switcher shell-pop prodigy pcre2el origami org-pdfview org-gcal org-bullets noflet mu4e-alert moe-theme mingus js2-refactor irony-eldoc iedit hungry-delete haskell-mode git-timemachine git-gutter ggtags expand-region emmet-mode elpy dumb-jump default-text-scale counsel company-jedi company-irony color-theme-modern circe-notifications cider beacon base16-theme auto-yasnippet auctex atomic-chrome alect-themes ag ac-js2))
  '(vc-annotate-background "#3b3b3b")
  '(vc-annotate-color-map
    '((20 . "#dd5542")
