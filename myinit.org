@@ -371,8 +371,8 @@
       :init
         (yas-global-mode 1))
 
-    (use-package yasnippet-snippets
-      :ensure t)
+;    (use-package yasnippet-snippets
+;      :ensure t)
   #+END_SRC
 
   #+RESULTS:
@@ -1114,7 +1114,7 @@ Eshell prompt
 (use-package cider
 :ensure t)
 
-
+(add-to-list 'exec-path "/home/zamansky/bin/")
 #+END_SRC
 * Dumb jump
 #+BEGIN_SRC emacs-lisp
