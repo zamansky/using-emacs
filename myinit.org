@@ -1437,7 +1437,14 @@ Eshell prompt
 
 #+END_SRC
 
-
+* PATH 
+#+BEGIN_SRC emacs-lisp
+(use-package exec-path-from-shell
+:ensure t
+:config
+(exec-path-from-shell-initialize)
+)
+#+END_SRC
 * Misc
 #+BEGIN_SRC emacs-lisp
 (setq browse-url-browser-function 'browse-url-generic
