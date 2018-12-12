@@ -135,6 +135,7 @@
 
 (use-package htmlize :ensure t)
 
+(setq org-ditaa-jar-path "/usr/share/ditaa/ditaa.jar")
 
   #+END_SRC
 
