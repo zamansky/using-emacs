@@ -1,4 +1,5 @@
-#+STARTUP: overview
+#+STARTUP: overview 
+#+PROPERTY: header-args :comments yes :results silent
 * repos
 #+BEGIN_SRC emacs-lisp
 (add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
