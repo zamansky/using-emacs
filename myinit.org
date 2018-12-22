@@ -282,20 +282,13 @@
 * Themes and modeline
   #+BEGIN_SRC emacs-lisp 
 
-        (use-package color-theme-modern
-          :ensure t)
-    
-        (use-package zenburn-theme
-          :ensure t
+    (use-package color-theme-modern
+      :ensure t)
+    (use-package zenburn-theme
+      :ensure t
           ; :config (load-theme 'zenburn t))
-          )
+      )
 
-
-        ;(use-package spacemacs-theme
-        ;  :ensure t
-        ;  ;:init
-        ;  ;(load-theme 'spacemacs-dark t)
-        ;  )
         (use-package base16-theme
         :ensure t
         )
@@ -306,15 +299,17 @@
         (use-package alect-themes
         :ensure t)
 
-        (use-package poet-theme
-        :ensure t
-        )
-        (use-package zerodark-theme
+    (use-package zerodark-theme
         :ensure t)
 
-        ;;(load-theme 'zerodark t)
-        ;;(zerodark-setup-modeline-format)
-
+    (use-package faff-theme
+      :ensure t)
+    (use-package tao-theme
+      :ensure t)
+    (use-package doom-themes
+      :ensure t)
+    (use-package doom-modeline
+      :ensure t)
   #+END_SRC
 
 
