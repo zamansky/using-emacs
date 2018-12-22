@@ -310,6 +310,10 @@
       :ensure t)
     (use-package doom-modeline
       :ensure t)
+(require 'doom-modeline)
+(doom-modeline-init)
+(load-theme 'faff t)
+
   #+END_SRC
 
 
