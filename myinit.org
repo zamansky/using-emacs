@@ -286,7 +286,7 @@
       :ensure t)
     (use-package zenburn-theme
       :ensure t
-          ; :config (load-theme 'zenburn t))
+    
       )
 
         (use-package base16-theme
@@ -312,8 +312,8 @@
       :ensure t)
 (require 'doom-modeline)
 (doom-modeline-init)
-(load-theme 'faff t)
-
+;(load-theme 'faff t)
+(load-theme 'poet t)
   #+END_SRC
 
 
