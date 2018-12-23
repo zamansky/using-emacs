@@ -304,6 +304,8 @@
 
     (use-package faff-theme
       :ensure t)
+    (use-package poet-theme
+      :ensure t)
     (use-package tao-theme
       :ensure t)
     (use-package doom-themes
