@@ -43,7 +43,7 @@
  '(org-startup-folded 'overview)
  '(org-startup-indented t)
  '(package-selected-packages
-   '(exec-path-from-shell zerodark-theme zenburn-theme yasnippet-snippets which-key wgrep-ag web-mode virtualenvwrapper use-package undo-tree try treemacs-projectile tern-auto-complete smartparens simple-mpc shell-switcher shell-pop prodigy poet-theme pcre2el ox-reveal origami org-pdfview org-gcal org-bullets noflet mu4e-conversation mu4e-alert moe-theme mingus magit js2-refactor irony-eldoc iedit hungry-delete htmlize haskell-mode git-timemachine git-gutter ggtags flycheck eyebrowse expand-region emmet-mode elpy easy-kill dumb-jump default-text-scale counsel company-jedi company-irony color-theme-modern circe-notifications cider beacon base16-theme auto-yasnippet auctex atomic-chrome ample-zen-theme alect-themes ag ac-js2 0blayout))
+   '(flycheck-pos-tip flycheck-clojure exec-path-from-shell zerodark-theme zenburn-theme yasnippet-snippets which-key wgrep-ag web-mode virtualenvwrapper use-package undo-tree try treemacs-projectile tern-auto-complete smartparens simple-mpc shell-switcher shell-pop prodigy poet-theme pcre2el ox-reveal origami org-pdfview org-gcal org-bullets noflet mu4e-conversation mu4e-alert moe-theme mingus magit js2-refactor irony-eldoc iedit hungry-delete htmlize haskell-mode git-timemachine git-gutter ggtags flycheck eyebrowse expand-region emmet-mode elpy easy-kill dumb-jump default-text-scale counsel company-jedi company-irony color-theme-modern circe-notifications cider beacon base16-theme auto-yasnippet auctex atomic-chrome ample-zen-theme alect-themes ag ac-js2 0blayout))
  '(pdf-view-midnight-colors '("#DCDCCC" . "#383838"))
  '(vc-annotate-background "#282c34")
  '(vc-annotate-color-map

@@ -1237,6 +1237,14 @@ Eshell prompt
 
 * misc
 #+BEGIN_SRC emacs-lisp
+
+(use-package aggressive-indent
+:ensure t
+:config
+(global-aggressive-indent-mode 1)
+;;(add-to-list 'aggressive-indent-excluded-modes 'html-mode)
+)
+
 (defun z/nikola-deploy () ""
 (interactive)
 (venv-with-virtualenv "blog" (shell-command "cd ~/gh/cestlaz.github.io; nikola github_deploy"))
@@ -1449,6 +1457,8 @@ Eshell prompt
 )
 #+END_SRC
 * Misc
+
+
 #+BEGIN_SRC emacs-lisp
 (setq browse-url-browser-function 'browse-url-generic
       browse-url-generic-program "chromium-browser")
