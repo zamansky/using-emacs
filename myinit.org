@@ -1411,7 +1411,7 @@ Eshell prompt
 :ensure t)
 #+END_SRC
 * mu4e-conversation
-#+BEGIN_SRC emacs-lisp
+#+BEGIN_SRC emacs-lisp :tangle no
 (use-package mu4e-conversation
 :ensure t
 )
