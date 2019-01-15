@@ -1,4 +1,4 @@
-p#+STARTUP: overview 
+#+STARTUP: overview 
 #+PROPERTY: header-args :comments yes :results silent
 * repos
 #+BEGIN_SRC emacs-lisp
@@ -862,119 +862,6 @@ p#+STARTUP: overview
 #+RESULTS:
 : better-shell-remote-open
 
-* eshell stuff
-#+BEGIN_SRC emacs-lisp
-
-  (use-package shell-switcher
-    :ensure t
-    :config 
-    (setq shell-switcher-mode t)
-    :bind (("C-'" . shell-switcher-switch-buffer)
-	   ("C-x 4 '" . shell-switcher-switch-buffer-other-window)
-	   ("C-M-'" . shell-switcher-new-shell)))
-
-
-  ;; Visual commands
-  (setq eshell-visual-commands '("vi" "screen" "top" "less" "more" "lynx"
-				 "ncftp" "pine" "tin" "trn" "elm" "vim"
-				 "nmtui" "alsamixer" "htop" "el" "elinks"
-				 ))
-                                 (setq eshell-visual-subcommands '(("git" "log" "diff" "show")))
-  (setq eshell-list-files-after-cd t)
-  (defun eshell-clear-buffer ()
-    "Clear terminal"
-    (interactive)
-    (let ((inhibit-read-only t))
-      (erase-buffer)
-      (eshell-send-input)))
-  (add-hook 'eshell-mode-hook
-	    '(lambda()
-	       (local-set-key (kbd "C-l") 'eshell-clear-buffer)))
-
-  (defun eshell/magit ()
-    "Function to open magit-status for the current directory"
-    (interactive)
-    (magit-status default-directory)
-    nil)
-
- ;; smart display stuff
-(require 'eshell)
-(require 'em-smart)
-(setq eshell-where-to-jump 'begin)
-(setq eshell-review-quick-commands nil)
-(setq eshell-smart-space-goes-to-end t)
-
-(add-hook 'eshell-mode-hook
-  (lambda ()
-    (eshell-smart-initialize)))
-;; eshell here
-(defun eshell-here ()
-  "Opens up a new shell in the directory associated with the
-current buffer's file. The eshell is renamed to match that
-directory to make multiple eshell windows easier."
-  (interactive)
-  (let* ((parent (if (buffer-file-name)
-                     (file-name-directory (buffer-file-name))
-                   default-directory))
-         (height (/ (window-total-height) 3))
-         (name   (car (last (split-string parent "/" t)))))
-    (split-window-vertically (- height))
-    (other-window 1)
-    (eshell "new")
-    (rename-buffer (concat "*eshell: " name "*"))
-
-    (insert (concat "ls"))
-    (eshell-send-input)))
-
-(global-set-key (kbd "C-!") 'eshell-here)
-
-#+END_SRC
-
-Eshell prompt
-#+BEGIN_SRC emacs-lisp
- (defcustom dotemacs-eshell/prompt-git-info
-  t
-  "Turns on additional git information in the prompt."
-  :group 'dotemacs-eshell
-  :type 'boolean)
-
-;; (epe-colorize-with-face "abc" 'font-lock-comment-face)
-(defmacro epe-colorize-with-face (str face)
-  `(propertize ,str 'face ,face))
-
-(defface epe-venv-face
-``  '((t (:inherit font-lock-comment-face)))
-  "Face of python virtual environment info in prompt."
-  :group 'epe)
-
-  (setq eshell-prompt-function
-      (lambda ()
-        (concat (propertize (abbreviate-file-name (eshell/pwd)) 'face 'eshell-prompt)
-                (when (and dotemacs-eshell/prompt-git-info
-                           (fboundp #'vc-git-branches))
-                  (let ((branch (car (vc-git-branches))))
-                    (when branch
-                      (concat
-                       (propertize " [" 'face 'font-lock-keyword-face)
-                       (propertize branch 'face 'font-lock-function-name-face)
-                       (let* ((status (shell-command-to-string "git status --porcelain"))
-                              (parts (split-string status "\n" t " "))
-                              (states (mapcar #'string-to-char parts))
-                              (added (count-if (lambda (char) (= char ?A)) states))
-                              (modified (count-if (lambda (char) (= char ?M)) states))
-                              (deleted (count-if (lambda (char) (= char ?D)) states)))
-                         (when (> (+ added modified deleted) 0)
-                           (propertize (format " +%d ~%d -%d" added modified deleted) 'face 'font-lock-comment-face)))
-                       (propertize "]" 'face 'font-lock-keyword-face)))))
-                (when (and (boundp #'venv-current-name) venv-current-name)
-                  (concat 
-                    (epe-colorize-with-face " [" 'epe-venv-face) 
-                    (propertize venv-current-name 'face `(:foreground "#2E8B57" :slant italic))
-                    (epe-colorize-with-face "]" 'epe-venv-face))) 
-                (propertize " $ " 'face 'font-lock-constant-face))))
-#+END_SRC
-#+RESULTS:
-: t
 * Elfeed
 #+BEGIN_SRC emacs-lisp :tangle no
 
@@ -1331,19 +1218,6 @@ Eshell prompt
 : origami-toggle-node
 
 #  LocalWords:  DIRED Javascript Screencasts Autocomplete
-* shell-pop 
-#+BEGIN_SRC emacs-lisp
-(use-package shell-pop
-:ensure t
-  :bind (("s-t" . shell-pop))
-  :config
-  (setq shell-pop-shell-type (quote ("ehell" "eshell" (lambda nil (eshell)))))
-  (setq shell-pop-term-shell "eshell")
-  ;; need to do this manually or not picked up by `shell-pop'
-  (shell-pop--set-shell-type 'shell-pop-shell-type shell-pop-shell-type))
-
-
-#+END_SRC
 * Wgrep
 #+BEGIN_SRC emacs-lisp
 (use-package wgrep
