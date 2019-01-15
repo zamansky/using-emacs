@@ -943,7 +943,7 @@ Eshell prompt
   `(propertize ,str 'face ,face))
 
 (defface epe-venv-face
-  '((t (:inherit font-lock-comment-face)))
+``  '((t (:inherit font-lock-comment-face)))
   "Face of python virtual environment info in prompt."
   :group 'epe)
 
@@ -1459,6 +1459,17 @@ Eshell prompt
 (exec-path-from-shell-initialize)
 )
 #+END_SRC
+* Counsel-spotify
+#+begin_src emacs-lisp
+
+(setq counsel-spotify-client-id "ce31becb1af94921907671e4bfa7f558")
+(setq counsel-spotify-client-secret "9433b011b7094b2b8c4eb0255b8249e3")
+(use-package counsel-spotify
+:ensure t
+:config
+(require 'counsel-spotify)
+)
+#+end_src
 * Misc
 
 
