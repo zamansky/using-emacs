@@ -8,10 +8,10 @@
  (rear-context-string . "hi, Xing Tao]]\n\n")
  (position . 10749))
 ("org-capture-last-stored"
- (filename . "~/Dropbox/orgfiles/i.org")
- (front-context-string . "** some blog ide")
- (rear-context-string . "\n* Blog Topics:\n")
- (position . 26196))
+ (filename . "~/Sync/orgfiles/gcal.org")
+ (front-context-string . "* Test of a new ")
+ (rear-context-string . "2019-03-23 Sat>\n")
+ (position . 17506))
 ("elfeed-unread"
  (location . "@6-months-ago +unread")
  (tags "unread")
@@ -24,13 +24,14 @@
  (location . "@6-months-ago +education")
  (tags
   #("education" 0 9
-    (fontified nil face
-	       (org-tag org-level-2)
-	       mouse-face highlight keymap
-	       (keymap
-		(follow-link . mouse-face)
-		(mouse-3 . org-find-file-at-mouse)
-		(mouse-2 . org-open-at-mouse)))))
+    (keymap
+     (keymap
+      (follow-link . mouse-face)
+      (mouse-3 . org-find-file-at-mouse)
+      (mouse-2 . org-open-at-mouse))
+     mouse-face highlight face
+     (org-tag org-level-2)
+     fontified nil)))
  (handler . elfeed-search-bookmark-handler))
 ("elfeed-all"
  (location . "@6-months-ago")

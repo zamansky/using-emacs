@@ -1355,3 +1355,13 @@
 
 #+END_SRC
 
+* Keyfreq
+#+BEGIN_SRC emacs-lisp
+  (use-package keyfreq
+    :ensure t
+    :config
+    (require 'keyfreq)
+    (keyfreq-mode 1)
+    (keyfreq-autosave-mode 1)
+    )
+#+END_SRC
