@@ -1365,3 +1365,12 @@
     (keyfreq-autosave-mode 1)
     )
 #+END_SRC
+* Word stuff
+#+BEGIN_SRC emacs-lisp
+  (use-package dictionary
+    :ensure t)
+
+  (use-package synosaurus
+    :ensure t)
+
+#+END_SRC
