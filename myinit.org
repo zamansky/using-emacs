@@ -1408,3 +1408,13 @@
   (add-hook 'rust-mode-hook 'flycheck-mode))
 
 #+END_SRC
+* Ripgrep
+#+BEGIN_SRC emacs-lisp
+(use-package deadgrep 
+:ensure t)
+
+(use-package rg
+:ensure t
+:commands rg)
+
+#+END_SRC
