@@ -1379,6 +1379,8 @@
 ;; don't forget to install racer:
 ;; rustup toolchain add nightly
 ;; cargo +nightly install racer
+;; rustup component add rust-src
+;; rustup component add rustfmt
 (use-package racer
   :ensure t
   :config
