@@ -149,7 +149,7 @@
   :ensure t
   :init
   (progn
-  (setq aw-scope 'frame)
+  (setq aw-scope 'global) ;; was frame
   (global-set-key (kbd "C-x O") 'other-frame)
     (global-set-key [remap other-window] 'ace-window)
     (custom-set-faces
