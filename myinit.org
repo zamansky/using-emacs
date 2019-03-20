@@ -1192,7 +1192,7 @@
 (define-key z-map (kbd "i") (lambda () (interactive) (find-file "~/Sync/orgfiles/i.org")))
 (define-key z-map (kbd "f") 'origami-toggle-node)
 (define-key z-map (kbd "w") 'z/swap-windows)
-
+(define-key z-map (kbd "*") 'calc)
 
   (setq user-full-name "Mike Zamansky"
                           user-mail-address "mz631@hunter.cuny.edu")
