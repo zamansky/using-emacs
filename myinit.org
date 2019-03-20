@@ -1177,6 +1177,9 @@
   (org-agenda arg "c")
   (org-agenda-fortnight-view))
 
+(defun z/load-iorg ()
+(interactive )
+(find-file "~/Sync/orgfiles/i.org"))
 
 ;; set up my own map
 (define-prefix-command 'z-map)
@@ -1189,7 +1192,7 @@
 (define-key z-map (kbd "g") 'counsel-ag)
 
 (define-key z-map (kbd "s") 'flyspell-correct-word-before-point)
-(define-key z-map (kbd "i") (lambda () (interactive) (find-file "~/Sync/orgfiles/i.org")))
+(define-key z-map (kbd "i") 'z/load-iorg)
 (define-key z-map (kbd "f") 'origami-toggle-node)
 (define-key z-map (kbd "w") 'z/swap-windows)
 (define-key z-map (kbd "*") 'calc)
