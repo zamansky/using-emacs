@@ -577,7 +577,7 @@
 ;  :config (require 'dired+)
 ;  )
 
-
+(setq dired-dwim-target t)
 #+END_SRC
 
 #+RESULTS:
