@@ -581,6 +581,10 @@
 
 (use-package dired-narrow
 :ensure t
+:config
+(bind-key "C-c C-n" #'dired-narrow)
+("bind-key C-c C-f" #'dired-narrow-fuzzy)
+(bind-key "C-x C-N" #'dired-narrow-regexp)
 )
 
 (use-package dired-subtree :ensure t
