@@ -578,6 +578,10 @@
 ;  )
 
 (setq dired-dwim-target t)
+
+(use-package dired-narrow
+:ensure t
+)
 #+END_SRC
 
 #+RESULTS:
