@@ -34,109 +34,92 @@
   Org bullets makes things look pretty
   #+BEGIN_SRC emacs-lisp
 
-  (use-package org 
-  :ensure t
-  :pin org)
+    (use-package org 
+      :ensure t
+      :pin org)
 
     (setenv "BROWSER" "chromium-browser")
+    (use-package org-bullets
+      :ensure t
+      :config
+      (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+    (custom-set-variables
+     '(org-directory "~/Sync/orgfiles")
+     '(org-default-notes-file (concat org-directory "/notes.org"))
+     '(org-export-html-postamble nil)
+     '(org-hide-leading-stars t)
+     '(org-startup-folded (quote overview))
+     '(org-startup-indented t)
+     '(org-confirm-babel-evaluate nil)
+     '(org-src-fontify-natively t)y
+     )
 
-        (use-package org-bullets
-        :ensure t
-        :config
-        (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+    (setq org-file-apps
+          (append '(
+                    ("\\.pdf\\'" . "evince %s")
+                    ("\\.x?html?\\'" . "/usr/bin/chromium-browser %s")
+                    ) org-file-apps ))
 
-            (custom-set-variables
-             '(org-directory "~/Sync/orgfiles")
-             '(org-default-notes-file (concat org-directory "/notes.org"))
-             '(org-export-html-postamble nil)
-             '(org-hide-leading-stars t)
-             '(org-startup-folded (quote overview))
-             '(org-startup-indented t)
-             )
+    (global-set-key "\C-ca" 'org-agenda)
+    (setq org-agenda-start-on-weekday nil)
+    (setq org-agenda-custom-commands
+          '(("c" "Simple agenda view"
+             ((agenda "")
+              (alltodo "")))))
 
-            (setq org-file-apps
-  		(append '(
-          		  ("\\.pdf\\'" . "evince %s")
- ("\\.x?html?\\'" . "/usr/bin/chromium-browser %s")
-          		  ) org-file-apps ))
+    (global-set-key (kbd "C-c c") 'org-capture)
 
-            (global-set-key "\C-ca" 'org-agenda)
-            (setq org-agenda-start-on-weekday nil)
-            (setq org-agenda-custom-commands
-            '(("c" "Simple agenda view"
-            ((agenda "")
-            (alltodo "")))))
+    (setq org-agenda-files (list "~/Sync/orgfiles/gcal.org"
+                                 "~/Sync/orgfiles/soe-cal.org"
+                                 "~/Sync/orgfiles/i.org"
+                                 "~/Sync/orgfiles/schedule.org"))
+    (setq org-capture-templates
+          '(("a" "Appointment" entry (file  "~/Sync/orgfiles/gcal.org" )
+             "* %?\n\n%^T\n\n:PROPERTIES:\n\n:END:\n\n")
+            ("l" "Link" entry (file+headline "~/Sync/orgfiles/links.org" "Links")
+             "* %? %^L %^g \n%T" :prepend t)
+            ("b" "Blog idea" entry (file+headline "~/Sync/orgfiles/i.org" "Blog Topics:")
+             "* %?\n%T" :prepend t)
+            ("t" "To Do Item" entry (file+headline "~/Sync/orgfiles/i.org" "To Do and Notes")
+             "* TODO %?\n%u" :prepend t)
+            ("m" "Mail To Do" entry (file+headline "~/Sync/orgfiles/i.org" "To Do and Notes")
+             "* TODO %a\n %?" :prepend t)
+            ("g" "GMail To Do" entry (file+headline "~/Sync/orgfiles/i.org" "To Do and Notes")
+             "* TODO %^L\n %?" :prepend t)
+            ("n" "Note" entry (file+headline "~/Sync/orgfiles/i.org" "Notes")
+             "* %u %? " :prepend t)
+            ))
+  
 
-            (global-set-key (kbd "C-c c") 'org-capture)
+    (defadvice org-capture-finalize 
+        (after delete-capture-frame activate)  
+      "Advise capture-finalize to close the frame"  
+      (if (equal "capture" (frame-parameter nil 'name))  
+          (delete-frame)))
 
-            (setq org-agenda-files (list "~/Sync/orgfiles/gcal.org"
-            "~/Sync/orgfiles/soe-cal.org"
-          			       "~/Sync/orgfiles/i.org"
-          			       "~/Sync/orgfiles/schedule.org"))
-            (setq org-capture-templates
-          			  '(("a" "Appointment" entry (file  "~/Sync/orgfiles/gcal.org" )
-          				   "* %?\n\n%^T\n\n:PROPERTIES:\n\n:END:\n\n")
-          				  ("l" "Link" entry (file+headline "~/Sync/orgfiles/links.org" "Links")
-          				   "* %? %^L %^g \n%T" :prepend t)
-          				  ("b" "Blog idea" entry (file+headline "~/Sync/orgfiles/i.org" "Blog Topics:")
-          				   "* %?\n%T" :prepend t)
-          				  ("t" "To Do Item" entry (file+headline "~/Sync/orgfiles/i.org" "To Do and Notes")
-          				   "* TODO %?\n%u" :prepend t)
-  					  ("m" "Mail To Do" entry (file+headline "~/Sync/orgfiles/i.org" "To Do and Notes")
-  					   "* TODO %a\n %?" :prepend t)
-  					  ("g" "GMail To Do" entry (file+headline "~/Sync/orgfiles/i.org" "To Do and Notes")
-  					   "* TODO %^L\n %?" :prepend t)
-  					  ("n" "Note" entry (file+headline "~/Sync/orgfiles/i.org" "Notes")
-          				   "* %u %? " :prepend t)
-  					  ))
-            ;; (setq org-capture-templates
-        ;; 		    '(("a" "Appointment" entry (file  "~/Sync/orgfiles/gcal.org" )
-        ;; 			     "* TODO %?\n:PROPERTIES:\nDEADLINE: %^T \n\n:END:\n %i\n")
-        ;; 			    ("l" "Link" entry (file+headline "~/Sync/orgfiles/links.org" "Links")
-        ;; 			     "* %? %^L %^g \n%T" :prepend t)
-        ;; 			    ("b" "Blog idea" entry (file+headline "~/Sync/orgfiles/i.org" "POSTS:")
-        ;; 			     "* %?\n%T" :prepend t)
-        ;; 			    ("t" "To Do Item" entry (file+headline "~/Sync/orgfiles/i.org" "To Do")
-        ;; 			     "* TODO %?\n%u" :prepend t)
-        ;; 			    ("n" "Note" entry (file+headline "~/Sync/orgfiles/i.org" "Note space")
-        ;; 			     "* %?\n%u" :prepend t)
+    (defadvice org-capture-destroy 
+        (after delete-capture-frame activate)  
+      "Advise capture-destroy to close the frame"  
+      (if (equal "capture" (frame-parameter nil 'name))  
+          (delete-frame)))  
 
-        ;; 			    ("j" "Journal" entry (file+datetree "~/Dropbox/journal.org")
-        ;; 			     "* %?\nEntered on %U\n  %i\n  %a")
-            ;;                                ("s" "Screencast" entry (file "~/Sync/orgfiles/screencastnotes.org")
-            ;;                                "* %?\n%i\n")))
+    (use-package noflet
+      :ensure t )
+    (defun make-capture-frame ()
+      "Create a new frame and run org-capture."
+      (interactive)
+      (make-frame '((name . "capture")))
+      (select-frame-by-name "capture")
+      (delete-other-windows)
+      (noflet ((switch-to-buffer-other-window (buf) (switch-to-buffer buf)))
+        (org-capture)))
+;; (require 'ox-beamer)
+;; for inserting inactive dates
+    (define-key org-mode-map (kbd "C-c >") (lambda () (interactive (org-time-stamp-inactive))))
 
+    (use-package htmlize :ensure t)
 
-        (defadvice org-capture-finalize 
-            (after delete-capture-frame activate)  
-        "Advise capture-finalize to close the frame"  
-        (if (equal "capture" (frame-parameter nil 'name))  
-        (delete-frame)))
-
-        (defadvice org-capture-destroy 
-            (after delete-capture-frame activate)  
-        "Advise capture-destroy to close the frame"  
-        (if (equal "capture" (frame-parameter nil 'name))  
-        (delete-frame)))  
-
-        (use-package noflet
-        :ensure t )
-        (defun make-capture-frame ()
-        "Create a new frame and run org-capture."
-        (interactive)
-        (make-frame '((name . "capture")))
-        (select-frame-by-name "capture")
-        (delete-other-windows)
-        (noflet ((switch-to-buffer-other-window (buf) (switch-to-buffer buf)))
-            (org-capture)))
-
-; (require 'ox-beamer)
-; for inserting inactive dates
-(define-key org-mode-map (kbd "C-c >") (lambda () (interactive (org-time-stamp-inactive))))
-
-(use-package htmlize :ensure t)
-
-(setq org-ditaa-jar-path "/usr/share/ditaa/ditaa.jar")
+    (setq org-ditaa-jar-path "/usr/share/ditaa/ditaa.jar")
 
   #+END_SRC
 
