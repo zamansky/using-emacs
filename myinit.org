@@ -51,7 +51,7 @@
      '(org-startup-folded (quote overview))
      '(org-startup-indented t)
      '(org-confirm-babel-evaluate nil)
-     '(org-src-fontify-natively t)y
+     '(org-src-fontify-natively t)
      )
 
     (setq org-file-apps
