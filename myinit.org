@@ -745,6 +745,8 @@
     (bind-key "C-x g" 'magit-status)
     ))
 
+(setq magit-status-margin
+  '(t "%Y-%m-%d %H:%M " magit-log-margin-width t 18))
     (use-package git-gutter
     :ensure t
     :init
