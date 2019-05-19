@@ -656,6 +656,7 @@
 #+END_SRC
 * Hydra
 #+BEGIN_SRC emacs-lisp
+(use-package posframe :ensure t)
   (use-package hydra 
     :ensure hydra
     :init 

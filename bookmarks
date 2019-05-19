@@ -8,10 +8,10 @@
  (rear-context-string . "hi, Xing Tao]]\n\n")
  (position . 10749))
 ("org-capture-last-stored"
- (filename . "~/Sync/orgfiles/links.org")
- (front-context-string . "**  [[https://pe")
- (rear-context-string . "ng(g)\n\n\n* Links\n")
- (position . 218))
+ (filename . "~/Sync/orgfiles/i.org")
+ (front-context-string . "** TODO [[mu4e:m")
+ (rear-context-string . "o Do and Notes \n")
+ (position . 949))
 ("elfeed-unread"
  (location . "@6-months-ago +unread")
  (tags "unread")
@@ -24,13 +24,14 @@
  (location . "@6-months-ago +education")
  (tags
   #("education" 0 9
-    (fontified nil face
-	       (org-tag org-level-2)
-	       mouse-face highlight keymap
-	       (keymap
-		(follow-link . mouse-face)
-		(mouse-3 . org-find-file-at-mouse)
-		(mouse-2 . org-open-at-mouse)))))
+    (keymap
+     (keymap
+      (follow-link . mouse-face)
+      (mouse-3 . org-find-file-at-mouse)
+      (mouse-2 . org-open-at-mouse))
+     mouse-face highlight face
+     (org-tag org-level-2)
+     fontified nil)))
  (handler . elfeed-search-bookmark-handler))
 ("elfeed-all"
  (location . "@6-months-ago")
