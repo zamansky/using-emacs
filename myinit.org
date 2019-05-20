@@ -19,13 +19,25 @@
 	:ensure t)
 #+END_SRC
 
+* posframe
+
+#+BEGIN_SRC emacs-lisp
+(use-package posframe :ensure t)
+#+END_SRC
 * which key
   Brings up some help
   #+BEGIN_SRC emacs-lisp
-  (use-package which-key
-	:ensure t 
-	:config
-	(which-key-mode))
+    (use-package which-key
+      :ensure t 
+      :config
+      (which-key-mode))
+
+    ;; (use-package which-key-posframe		;
+    ;;      :ensure t 
+    ;;      :config
+    ;;      (which-key-posframe-mode))
+
+
   #+END_SRC
 
 * Org mode
@@ -570,7 +582,7 @@
 :ensure t
 :config
 (bind-key "C-c C-n" #'dired-narrow)
-("bind-key C-c C-f" #'dired-narrow-fuzzy)
+(bind-key "C-c C-f" #'dired-narrow-fuzzy)
 (bind-key "C-x C-N" #'dired-narrow-regexp)
 )
 
@@ -656,7 +668,6 @@
 #+END_SRC
 * Hydra
 #+BEGIN_SRC emacs-lisp
-(use-package posframe :ensure t)
   (use-package hydra 
     :ensure hydra
     :init 
