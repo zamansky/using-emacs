@@ -352,8 +352,12 @@
 
             (use-package elpy
             :ensure t
+:custom (elpy-rpc-backend "jedi")
             :config 
-            (elpy-enable))
+
+            (elpy-enable)
+            
+)
 
         (use-package virtualenvwrapper
           :ensure t
