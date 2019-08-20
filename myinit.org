@@ -50,7 +50,7 @@
       :ensure t
       :pin org)
 
-    (setenv "BROWSER" "chromium-browser")
+    (setenv "BROWSER" "firefox")
     (use-package org-bullets
       :ensure t
       :config
@@ -69,7 +69,7 @@
     (setq org-file-apps
           (append '(
                     ("\\.pdf\\'" . "evince %s")
-                    ("\\.x?html?\\'" . "/usr/bin/chromium-browser %s")
+                    ("\\.x?html?\\'" . "/usr/bin/firefox %s")
                     ) org-file-apps ))
 
     (global-set-key "\C-ca" 'org-agenda)
@@ -1332,7 +1332,7 @@
 
 #+BEGIN_SRC emacs-lisp
 (setq browse-url-browser-function 'browse-url-generic
-      browse-url-generic-program "chromium-browser")
+      browse-url-generic-program "firefox")
 
 (setq auto-window-vscroll nil)
 
