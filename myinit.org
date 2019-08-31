@@ -960,44 +960,36 @@
 
 * Clojure
 #+BEGIN_SRC emacs-lisp
-(use-package cider
-:ensure t)
+ (use-package cider
+    :ensure t
+    :config
+    (add-hook 'cider-repl-mode-hook #'company-mode)
+    (add-hook 'cider-mode-hook #'company-mode)
+    (add-hook 'cider-mode-hook #'eldoc-mode)
+;;    (add-hook 'cider-mode-hook #'cider-hydra-mode)
+    (setq cider-repl-use-pretty-printing t)
+    (setq cider-repl-display-help-banner nil)
+    ;;    (setq cider-cljs-lein-repl "(do (use 'figwheel-sidecar.repl-api) (start-figwheel!) (cljs-repl))")
 
-(add-to-list 'exec-path "/home/zamansky/bin/")
+    :bind (("M-r" . cider-namespace-refresh)
+           ("C-c r" . cider-repl-reset)
+           ("C-c ." . cider-reset-test-run-tests))
+    )
+
+  (use-package clj-refactor
+    :ensure t
+    :config
+    (add-hook 'clojure-mode-hook (lambda ()
+                                   (clj-refactor-mode 1)
+                                   ;; insert keybinding setup here
+                                   ))
+    (cljr-add-keybindings-with-prefix "C-c C-m")
+    (setq cljr-warn-on-eval nil)
+    :bind ("C-c '" . hydra-cljr-help-menu/body)
+    )
 #+END_SRC
 
-#+BEGIN_SRC emacs-lisp
-(use-package flycheck-clojure
-:ensure t
-:config
-(eval-after-load 'flycheck '(flycheck-clojure-setup))
-)
-(use-package flycheck-pos-tip
-:config
-(eval-after-load 'flycheck
-  '(setq flycheck-display-errors-function #'flycheck-pos-tip-error-messages))
-)
-#+END_SRC
 
-#+BEGIN_SRC emacs-lisp
-(use-package clj-refactor
-:ensure t
-:config
-(defun my-clojure-mode-hook ()
-    (clj-refactor-mode 1)
-    (yas-minor-mode 1) ; for adding require/use/import statements
-    ;; This choice of keybinding leaves cider-macroexpand-1 unbound
-    (cljr-add-keybindings-with-prefix "C-c C-m"))
-(add-hook 'clojure-mode-hook #'my-clojure-mode-hook)
-)
-
-(use-package discover
-:ensure t)
-(use-package discover-clj-refactor
-:ensure t)
-
-
-#+END_SRC
 * Dumb jump
 #+BEGIN_SRC emacs-lisp
 
