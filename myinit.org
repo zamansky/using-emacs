@@ -3,7 +3,6 @@
 * repos
 #+BEGIN_SRC emacs-lisp
 (add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
-
 #+END_SRC
 * interface tweaks
 #+BEGIN_SRC emacs-lisp
@@ -32,13 +31,7 @@
       :config
       (which-key-mode))
 
-    ;; (use-package which-key-posframe		;
-    ;;      :ensure t 
-    ;;      :config
-    ;;      (which-key-posframe-mode))
-
-
-  #+END_SRC
+#+END_SRC
 
 * Org mode
 
@@ -208,16 +201,6 @@
   :bind ("M-s" . avy-goto-word-1)) ;; changed from char as per jcs
   #+END_SRC
 
-* Autocomplete
-  #+BEGIN_SRC emacs-lisp  :tangle no
-     (use-package auto-complete 
-     :ensure t
-     :init
-     (progn
-     (ac-config-default)
-       (global-auto-complete-mode t)
-      ))
-  #+END_SRC
 * Company
 #+BEGIN_SRC emacs-lisp
 (use-package company
@@ -1080,18 +1063,6 @@
   (setq ibuffer-expert t)
 
 #+END_SRC
-* Prodigy
-#+BEGIN_SRC emacs-lisp
-    (use-package prodigy
-    :ensure t
-    :config
-    (load-if-exists "~/Sync/shared/prodigy-services.el")
-)
-#+END_SRC
-
-#+RESULTS:
-: t
-
 * Treemacs
 #+BEGIN_SRC emacs-lisp
   (use-package treemacs
@@ -1144,10 +1115,6 @@
 ;;(add-to-list 'aggressive-indent-excluded-modes 'html-mode)
 )
 
-(defun z/nikola-deploy () ""
-(interactive)
-(venv-with-virtualenv "blog" (shell-command "cd ~/gh/cestlaz.github.io; nikola github_deploy"))
-)
 
 (defun z/swap-windows ()
 ""
