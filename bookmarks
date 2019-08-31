@@ -11,7 +11,7 @@
  (filename . "~/Sync/orgfiles/i.org")
  (front-context-string . "** TODO [[mu4e:m")
  (rear-context-string . "o Do and Notes \n")
- (position . 949))
+ (position . 137))
 ("elfeed-unread"
  (location . "@6-months-ago +unread")
  (tags "unread")
@@ -24,14 +24,13 @@
  (location . "@6-months-ago +education")
  (tags
   #("education" 0 9
-    (keymap
-     (keymap
-      (follow-link . mouse-face)
-      (mouse-3 . org-find-file-at-mouse)
-      (mouse-2 . org-open-at-mouse))
-     mouse-face highlight face
-     (org-tag org-level-2)
-     fontified nil)))
+    (fontified nil face
+	       (org-tag org-level-2)
+	       mouse-face highlight keymap
+	       (keymap
+		(follow-link . mouse-face)
+		(mouse-3 . org-find-file-at-mouse)
+		(mouse-2 . org-open-at-mouse)))))
  (handler . elfeed-search-bookmark-handler))
 ("elfeed-all"
  (location . "@6-months-ago")

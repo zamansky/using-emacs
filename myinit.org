@@ -982,6 +982,39 @@
 
 (add-to-list 'exec-path "/home/zamansky/bin/")
 #+END_SRC
+
+#+BEGIN_SRC emacs-lisp
+(use-package flycheck-clojure
+:ensure t
+:config
+(eval-after-load 'flycheck '(flycheck-clojure-setup))
+)
+(use-package flycheck-pos-tip
+:config
+(eval-after-load 'flycheck
+  '(setq flycheck-display-errors-function #'flycheck-pos-tip-error-messages))
+)
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp
+(use-package clj-refactor
+:ensure t
+:config
+(defun my-clojure-mode-hook ()
+    (clj-refactor-mode 1)
+    (yas-minor-mode 1) ; for adding require/use/import statements
+    ;; This choice of keybinding leaves cider-macroexpand-1 unbound
+    (cljr-add-keybindings-with-prefix "C-c C-m"))
+(add-hook 'clojure-mode-hook #'my-clojure-mode-hook)
+)
+
+(use-package discover
+:ensure t)
+(use-package discover-clj-refactor
+:ensure t)
+
+
+#+END_SRC
 * Dumb jump
 #+BEGIN_SRC emacs-lisp
 
@@ -1300,11 +1333,11 @@
 #+END_SRC
 * Easy kill
 #+BEGIN_SRC emacs-lisp
-(use-package easy-kill
-  :ensure t
-  :config
-  (global-set-key [remap kill-ring-save] #'easy-kill)
-  (global-set-key [remap mark-sexp] #'easy-mark))
+  ;; (use-package easy-kill
+  ;;   :ensure t
+  ;;   :config
+  ;;   (global-set-key [remap kill-ring-save] #'easy-kill)
+  ;;   (global-set-key [remap mark-sexp] #'easy-mark))
 
 #+END_SRC
 
