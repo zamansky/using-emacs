@@ -367,7 +367,7 @@
   #+RESULTS:
 
 * Undo Tree
-  #+BEGIN_SRC emacs-lisp
+  #+BEGIN_SRC emacs-lisp :tangle no
     (use-package undo-tree
       :ensure t
       :init
@@ -624,6 +624,7 @@
     ;;   (counsel-projectile-on)q)
   
 (use-package smartparens
+:ensure t
   :hook (prog-mode . smartparens-mode)
   :custom
   (sp-escape-quotes-after-insert nil)
